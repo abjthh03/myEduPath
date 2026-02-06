@@ -1,7 +1,13 @@
 from flask import Flask, request, redirect, session,  render_template, send_from_directory, jsonify
 from config import get_db_connection
 
-app = Flask(__name__, static_folder="../static", static_url_path="")
+app = Flask(
+    __name__,
+    template_folder="templates",
+    static_folder="../static",
+    static_url_path="/static"
+)
+
 app.secret_key = "myedupath_secret_key"
 
 
