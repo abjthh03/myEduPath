@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="colleges.html">Colleges</a>
+        <a href="jobs.html" class="active">Jobs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero home-hero">
+    <h2>Job Opportunities</h2>
+    <p>Explore latest jobs and internships for students</p>
+</section>
+
+<section class="home-section">
+    <div id="jobsContainer" class="jobs-grid">
+        <p>Loading jobs...</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 myEduPath | BCA Final Year Project</p>
+</footer>
+
+<script>
+fetch("http://127.0.0.1:5000/api/jobs")
+    .then(res => res.json())
+    .then(data => renderJobs(data))
+    .catch(() => {
+        document.getElementById("jobsContainer").innerHTML =
+            "<p>Failed to load jobs ❌</p>";
+    });
+
+function renderJobs(jobs) {
+    const container = document.getElementById("jobsContainer");
+    container.innerHTML = "";
+
+    jobs.forEach(job => {
+        container.innerHTML += `
+            <div class="job-card">
+                <h3>${job.title}</h3>
+                <p><b>Company:</b> ${job.company}</p>
+                <p><b>Location:</b> ${job.location}</p>
+                <p><b>Type:</b> ${job.job_type}</p>
+                <p><b>Salary:</b> ${job.salary}</p>
+
+                <a href="job-details.html?id=${job.id}" class="btn small-btn">
+                    View Details
+                </a>
+            </div>
+        `;
+    });
+}
+</script>
+
+</body>
+</html>

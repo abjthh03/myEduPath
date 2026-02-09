@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="colleges.html">Colleges</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero home-hero">
+    <h2>Explore Courses</h2>
+    <p>Browse academic and professional courses to shape your future</p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search courses..."
+            onkeyup="searchCourses()"
+        >
+        <button class="btn">Search</button>
+    </div>
+</section>
+
+<section class="home-section">
+    <h2 class="section-title">Course Categories</h2>
+
+    <div class="category-tabs">
+        <span class="category active" onclick="filterCourses('All', this)">All</span>
+        <span class="category" onclick="filterCourses('UG', this)">UG</span>
+        <span class="category" onclick="filterCourses('PG', this)">PG</span>
+        <span class="category" onclick="filterCourses('IT', this)">IT & Computer</span>
+        <span class="category" onclick="filterCourses('Design', this)">Design</span>
+        <span class="category" onclick="filterCourses('Commerce', this)">Commerce</span>
+    </div>
+</section>
+
+<section class="home-section">
+    <div id="courseContainer" class="course-grid">
+        <p>Loading courses...</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 myEduPath | BCA Final Year Project</p>
+</footer>
+
+<script>
+let allCourses = [];
+
+// FETCH COURSES
+fetch("http://127.0.0.1:5000/api/courses")
+    .then(res => res.json())
+    .then(data => {
+        allCourses = data;
+        displayCourses(allCourses);
+    })
+    .catch(() => {
+        document.getElementById("courseContainer").innerHTML =
+            "<p>Failed to load courses ❌</p>";
+    });
+
+// DISPLAY COURSES
+function displayCourses(courses) {
+    const container = document.getElementById("courseContainer");
+    container.innerHTML = "";
+
+    if (courses.length === 0) {
+        container.innerHTML = "<p>No courses found</p>";
+        return;
+    }
+
+    courses.forEach(course => {
+        container.innerHTML += `
+            <div class="course-card">
+                <h3>${course.course_name}</h3>
+                <p><b>Duration:</b> ${course.duration}</p>
+                <p><b>Eligibility:</b> ${course.eligibility}</p>
+                <p><b>Career:</b> ${course.career_scope}</p>
+
+                <a href="course-details.html?id=${course.id}" class="btn small-btn">
+                    View Details
+                </a>
+            </div>
+        `;
+    });
+}
+
+// FILTER COURSES
+function filterCourses(category, element) {
+    document.querySelectorAll(".category").forEach(c =>
+        c.classList.remove("active")
+    );
+    element.classList.add("active");
+
+    if (category === "All") {
+        displayCourses(allCourses);
+    } else {
+        const filtered = allCourses.filter(c => c.category === category);
+        displayCourses(filtered);
+    }
+}
+
+// SEARCH COURSES
+function searchCourses() {
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const filtered = allCourses.filter(course =>
+        course.course_name.toLowerCase().includes(keyword)
+    );
+    displayCourses(filtered);
+}
+</script>
+
+</body>
+</html>

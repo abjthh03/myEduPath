@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Course Details | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html" class="active">Courses</a>
+        <a href="colleges.html">Colleges</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="home-section">
+    <div id="courseDetails">
+        <p>Loading course details...</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 myEduPath | BCA Final Year Project</p>
+</footer>
+
+<script>
+/* ✅ GET COURSE ID FROM URL */
+const params = new URLSearchParams(window.location.search);
+const courseId = params.get("id");
+
+console.log("Course ID:", courseId);
+
+/* ❌ If no ID */
+if (!courseId) {
+    document.getElementById("courseDetails").innerHTML =
+        "<p>Invalid course ID ❌</p>";
+}
+
+/* ✅ FETCH SINGLE COURSE */
+fetch(`http://127.0.0.1:5000/api/course/${courseId}`)
+    .then(res => {
+        if (!res.ok) {
+            throw new Error("Course not found");
+        }
+        return res.json();
+    })
+    .then(course => {
+        document.getElementById("courseDetails").innerHTML = `
+            <div class="course-card">
+                <h2>${course.course_name}</h2>
+                <p><b>Category:</b> ${course.category}</p>
+                <p><b>Duration:</b> ${course.duration}</p>
+                <p><b>Eligibility:</b> ${course.eligibility}</p>
+                <p><b>Career Scope:</b> ${course.career_scope}</p>
+
+                <a href="courses.html" class="btn small-btn">← Back to Courses</a>
+            </div>
+        `;
+    })
+    .catch(err => {
+        console.error(err);
+        document.getElementById("courseDetails").innerHTML =
+            "<p>Failed to load course ❌</p>";
+    });
+</script>
+
+</body>
+</html>

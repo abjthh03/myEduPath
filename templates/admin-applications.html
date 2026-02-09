@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Job Applications | Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f9f4;
+      margin: 0;
+    }
+
+    header {
+      background: #1db954;
+      padding: 16px 40px;
+      color: white;
+      font-size: 22px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+
+    th {
+      background: #f0f7f2;
+      color: #2e7d32;
+    }
+
+    tr:hover {
+      background: #f9f9f9;
+    }
+
+    a.resume {
+      color: #1db954;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: white;
+      background: #1db954;
+      padding: 8px 18px;
+      border-radius: 20px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #777;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  myEduPath – Admin Applications
+</header>
+
+<div class="container">
+  <h2>📄 Job Applications</h2>
+
+  {% if applications %}
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Student</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Job</th>
+        <th>Company</th>
+        <th>Resume</th>
+        <th>Applied At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in applications %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ a.name }}</td>
+        <td>{{ a.email }}</td>
+        <td>{{ a.phone }}</td>
+        <td>{{ a.job_title }}</td>
+        <td>{{ a.company }}</td>
+        <td>
+          <a class="resume" href="{{ a.resume_link }}" target="_blank">
+            View 📎
+          </a>
+        </td>
+        <td>{{ a.created_at }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <div class="empty">No applications yet 🚫</div>
+  {% endif %}
+
+  <a href="/admin-dashboard" class="back">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

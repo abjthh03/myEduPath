@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Details | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="colleges.html" class="active">Colleges</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="home-section">
+    <div id="collegeDetails">
+        <p>Loading college details...</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 myEduPath | BCA Final Year Project</p>
+</footer>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const collegeId = params.get("id");
+
+console.log("College ID:", collegeId);
+
+if (!collegeId) {
+    document.getElementById("collegeDetails").innerHTML =
+        "<p>Invalid college ID ❌</p>";
+}
+
+fetch(`http://127.0.0.1:5000/api/college/${collegeId}`)
+    .then(res => {
+        if (!res.ok) throw new Error("College not found");
+        return res.json();
+    })
+    .then(college => {
+        document.getElementById("collegeDetails").innerHTML = `
+            <div class="college-card">
+                <h2>${college.college_name}</h2>
+                <p>📍 <b>Location:</b> ${college.location}</p>
+                <p>⭐ <b>Rating:</b> ${college.rating}</p>
+                <p><b>Courses Offered:</b> ${college.courses_offered}</p>
+
+                <a href="colleges.html" class="btn small-btn">← Back to Colleges</a>
+            </div>
+        `;
+    })
+    .catch(() => {
+        document.getElementById("collegeDetails").innerHTML =
+            "<p>Failed to load college ❌</p>";
+    });
+</script>
+
+</body>
+</html>

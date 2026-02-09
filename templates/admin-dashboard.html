@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        .admin-container {
+            max-width: 900px;
+            margin: 60px auto;
+        }
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+        .admin-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease;
+        }
+        .admin-card:hover {
+            transform: translateY(-6px);
+        }
+        .admin-card h3 {
+            color: #1db954;
+            margin-bottom: 10px;
+        }
+        .admin-card a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: white;
+            background: #1db954;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>myEduPath – Admin</h1>
+</header>
+
+<section class="admin-container">
+    <h2>Welcome Admin 👋</h2>
+    <p>Manage courses, jobs, and applications</p>
+
+    <div class="admin-grid">
+        <div class="admin-card">
+            <h3>📚 Courses</h3>
+            <a href="/add-course-form">Add Course</a><br><br>
+            <a href="/view-courses">View Courses</a>
+        </div>
+
+        <div class="admin-card">
+            <h3>💼 Jobs</h3>
+            <a href="/add-job-form">Add Job</a><br><br>
+            <a href="/api/jobs" target="_blank">View Jobs</a>
+        </div>
+
+        <div class="admin-card">
+            <h3>📄 Applications</h3>
+            <a href="/view-applications">View Applications</a>
+        </div>
+
+        <div class="admin-card">
+            <h3>🚪 Logout</h3>
+            <a href="/admin-logout">Logout</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

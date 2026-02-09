@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Colleges | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="courses.html">Courses</a>
+        <a href="colleges.html" class="active">Colleges</a>
+        <a href="jobs.html">Jobs</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<section class="hero home-hero">
+    <h2>Explore Colleges</h2>
+    <p>Find top colleges across Kerala, Bangalore and Mangalore</p>
+</section>
+
+<section class="home-section">
+    <h2 class="section-title">Browse by Location</h2>
+
+    <div class="category-tabs">
+        <span class="category active" onclick="filterColleges('All')">All</span>
+        <span class="category" onclick="filterColleges('Kerala')">Kerala</span>
+        <span class="category" onclick="filterColleges('Bangalore')">Bangalore</span>
+        <span class="category" onclick="filterColleges('Mangalore')">Mangalore</span>
+    </div>
+</section>
+
+<section class="home-section">
+    <div id="collegeContainer" class="college-cards">
+        <p>Loading colleges...</p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 myEduPath | BCA Final Year Project</p>
+</footer>
+
+<script>
+let allColleges = [];
+
+fetch("http://127.0.0.1:5000/api/colleges")
+    .then(res => res.json())
+    .then(data => {
+        allColleges = data;
+        renderColleges(allColleges);
+    })
+    .catch(() => {
+        document.getElementById("collegeContainer").innerHTML =
+            "<p>Failed to load colleges ❌</p>";
+    });
+
+function renderColleges(colleges) {
+    const container = document.getElementById("collegeContainer");
+    container.innerHTML = "";
+
+    colleges.forEach(college => {
+        container.innerHTML += `
+            <div class="college-card" data-location="${college.location}">
+                <h3>${college.college_name}</h3>
+                <p>📍 ${college.location}</p>
+                <p>⭐ Rating: ${college.rating}</p>
+                <p>Courses: ${college.courses_offered}</p>
+
+                <a href="college-details.html?id=${college.id}"
+                   class="btn small-btn">
+                   View Details
+                </a>
+            </div>
+        `;
+    });
+}
+
+function filterColleges(location) {
+    const cards = document.querySelectorAll(".college-card");
+    document.querySelectorAll(".category").forEach(c => c.classList.remove("active"));
+    event.target.classList.add("active");
+
+    cards.forEach(card => {
+        card.style.display =
+            location === "All" || card.dataset.location === location
+                ? "block"
+                : "none";
+    });
+}
+</script>
+
+</body>
+</html>

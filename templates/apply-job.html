@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Apply Job | myEduPath</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+
+<header>
+    <h1>myEduPath</h1>
+</header>
+
+<section class="home-section">
+    <div class="form-card">
+        <h2>Apply for Job</h2>
+
+        <form method="POST" action="http://127.0.0.1:5000/apply-job">
+            <input type="hidden" name="job_id" id="job_id">
+
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="resume_link" placeholder="Resume Link (Google Drive)" required>
+
+            <button type="submit" class="btn">Submit Application</button>
+        </form>
+    </div>
+</section>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+document.getElementById("job_id").value = params.get("id");
+</script>
+
+</body>
+</html>

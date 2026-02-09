@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myEduPath | Course & Career Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+<!-- Floating Background Icons -->
+<div class="floating-icons">
+  <span class="icon" data-speed="2">📘</span>
+  <span class="icon" data-speed="3">🎓</span>
+  <span class="icon" data-speed="1.5">✏️</span>
+  <span class="icon" data-speed="2.5">🖊️</span>
+  <span class="icon" data-speed="1.8">📚</span>
+  <span class="icon" data-speed="3.2">📐</span>
+  <span class="icon" data-speed="2.2">📝</span>
+</div>
+
+
+    <!-- Header -->
+   <header>
+    <h1>myEduPath</h1>
+
+   <nav>
+    <a href="index.html">Home</a>
+    <a href="courses.html">Courses</a>
+    <a href="colleges.html">Colleges</a>
+    <a href="jobs.html">Jobs</a>
+    <a href="contact.html">Contact</a>
+
+    <!-- AUTH BUTTONS -->
+    <a href="login.html" class="btn nav-btn">Login</a>
+    <a href="signup.html" class="btn nav-btn outline">Sign Up</a>
+</nav>
+
+    <!-- Theme Toggle (Homepage Only) -->
+    <div class="toggle" onclick="toggleTheme()"></div>
+</header>
+    <!-- Hero Section -->
+    <section class="hero home-hero">
+    <h2>Find the Right Course & Career Path</h2>
+    <p>
+        Explore courses, colleges and career options tailored for your future.
+        Make confident academic decisions with myEduPath.
+    </p>
+<!-- =====================
+     Popular Courses Section
+===================== -->
+<section class="home-section">
+    <h2 class="section-title">Popular Courses</h2>
+    <p class="section-subtitle">
+        Explore trending courses students are choosing today
+    </p>
+
+    <div class="course-cards">
+
+        <div class="course-card">
+           <h3>🎓 BCA</h3>
+<p>⏳ <b>Duration:</b> 3 Years</p>
+<p>💼 <b>Career:</b> Software, IT</p>
+
+            <a href="course-details.html" class="btn small-btn">View Details</a>
+        </div>
+
+        <div class="course-card">
+            <h3>🎓BSc Computer Science</h3>
+            <p>⏳Duration: 3 Years</p>
+            <p>💼Career: Development, Data</p>
+            <a href="course-details.html" class="btn small-btn">View Details</a>
+        </div>
+
+        <div class="course-card">
+            <h3>🎓BCom</h3>
+            <p>⏳Duration: 3 Years</p>
+            <p>💼Career: Finance, Accounting</p>
+            <a href="course-details.html" class="btn small-btn">View Details</a>
+        </div>
+
+        <div class="course-card">
+            <h3>🎓UI/UX Design</h3>
+            <p>⏳Duration: 6–12 Months</p>
+            <p>💼Career: Product Design</p>
+            <a href="course-details.html" class="btn small-btn">View Details</a>
+        </div>
+
+    </div>
+</section>
+<!-- =====================
+     Top Colleges Section
+===================== -->
+<section class="home-section alt-bg">
+    <h2 class="section-title">Top Colleges</h2>
+    <p class="section-subtitle">
+        Explore trusted institutions offering quality education
+    </p>
+
+    <div class="college-cards">
+
+        <div class="college-card">
+            <h3>Christ University</h3>
+            <p>📍 Bangalore</p>
+            <p class="rating">⭐⭐⭐⭐☆</p>
+            <a href="colleges.html" class="btn small-btn">View College</a>
+        </div>
+
+        <div class="college-card">
+            <h3>Amity University</h3>
+            <p>📍 Noida</p>
+            <p class="rating">⭐⭐⭐⭐☆</p>
+            <a href="colleges.html" class="btn small-btn">View College</a>
+        </div>
+
+        <div class="college-card">
+            <h3>Loyola College</h3>
+            <p>📍 Chennai</p>
+            <p class="rating">⭐⭐⭐⭐☆</p>
+            <a href="colleges.html" class="btn small-btn">View College</a>
+        </div>
+
+    </div>
+</section>
+<!-- =====================
+     Career Paths Section
+===================== -->
+<section class="home-section">
+    <h2 class="section-title">Career Paths</h2>
+    <p class="section-subtitle">
+        Explore popular career options based on your interests
+    </p>
+
+    <div class="career-cards">
+
+        <div class="career-card">
+            <h3>Software Developer</h3>
+            <p>Build and maintain software applications</p>
+            <p><strong>Courses:</strong> BCA, BSc CS</p>
+        </div>
+
+        <div class="career-card">
+            <h3>UI/UX Designer</h3>
+            <p>Design intuitive and engaging digital experiences</p>
+            <p><strong>Courses:</strong> UI/UX Design, BCA</p>
+        </div>
+
+        <div class="career-card">
+            <h3>Data Analyst</h3>
+            <p>Analyze data to support business decisions</p>
+            <p><strong>Courses:</strong> BSc CS, Data Science</p>
+        </div>
+
+        <div class="career-card">
+            <h3>Digital Marketer</h3>
+            <p>Promote brands through digital platforms</p>
+            <p><strong>Courses:</strong> BCom, Digital Marketing</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- =====================
+     Why myEduPath Section
+===================== -->
+<section class="home-section alt-bg">
+    <h2 class="section-title">Why myEduPath?</h2>
+    <p class="section-subtitle">
+        A complete platform to guide your academic and career journey
+    </p>
+
+    <div class="why-cards">
+        <div class="why-card">
+            <h3>🎯 Career Focused</h3>
+            <p>Clear guidance to choose the right course and career path.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>📚 Trusted Information</h3>
+            <p>Well-structured data on courses, colleges and careers.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>⚡ Easy to Use</h3>
+            <p>Simple, clean and student-friendly interface.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>🚀 Scalable Platform</h3>
+            <p>Can grow with more courses, colleges and AI features.</p>
+        </div>
+    </div>
+</section>
+
+<!-- =====================
+     Stats Section
+===================== -->
+<section class="home-section">
+    <div class="stats">
+
+        <div class="stat">
+            <h2>20+</h2>
+            <p>Courses</p>
+        </div>
+
+        <div class="stat">
+            <h2>30+</h2>
+            <p>Colleges</p>
+        </div>
+
+        <div class="stat">
+            <h2>200+</h2>
+            <p>Career Options</p>
+        </div>
+
+        <div class="stat">
+            <h2>1000+</h2>
+            <p>Students Guided</p>
+        </div>
+
+    </div>
+</section>
+
+    <!-- Search Box (UI Only) -->
+    <div class="search-box">
+        <input type="text" placeholder="Search courses, colleges or careers...">
+        <button class="btn">Search</button>
+    </div>
+
+    <a href="courses.html" class="btn secondary-btn">
+        Explore Popular Courses
+    </a>
+</section>
+
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature">
+            <h3>📘 Courses</h3>
+            <p>Find academic and professional courses</p>
+        </div>
+        <div class="feature">
+            <h3>🏫 Colleges</h3>
+            <p>Discover top institutions in India</p>
+        </div>
+        <div class="feature">
+            <h3>💼 Jobs</h3>
+            <p>Explore career opportunities</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 myEduPath | BCA Final Year Project</p>
+    </footer>
+<script src="js/main.js"></script>
+
+</body>
+</html>
