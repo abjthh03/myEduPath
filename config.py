@@ -1,18 +1,17 @@
+import os
 import mysql.connector
-from mysql.connector import Error
 
 def get_db_connection():
     try:
-        connection = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="root123",         
-            database="myedupath"
+        conn = mysql.connector.connect(
+            host=os.environ["DB_HOST"],
+            user=os.environ["DB_USER"],
+            password=os.environ["DB_PASSWORD"],
+            database=os.environ["DB_NAME"],
+            port=int(os.environ["DB_PORT"])
         )
-
-        if connection.is_connected():
-            return connection
-
-    except Error as e:
+        return conn
+    except Exception as e:
         print("❌ Database connection failed:", e)
         return None
+
