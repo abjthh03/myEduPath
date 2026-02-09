@@ -26,7 +26,11 @@ def jobs():
     return render_template('jobs.html')
 
 
-# ---------------- ADMIN AUTH ----------------
+@app.route("/admin-login")
+def admin_login_page():
+    return render_template("admin-login.html")
+
+
 @app.route("/admin-login", methods=["POST"])
 def admin_login():
     conn = get_db_connection()
@@ -48,14 +52,14 @@ def admin_login():
 @app.route("/admin-dashboard")
 def admin_dashboard():
     if not session.get("admin_logged_in"):
-        return redirect("/admin-login.html")
+        return redirect("/admin-login")
     return send_from_directory(app.static_folder, "admin-dashboard.html")
 
 
 @app.route("/admin-logout")
 def admin_logout():
     session.clear()
-    return redirect("/admin-login.html")
+    return redirect("/admin-login")
 
 
 # ---------------- COURSES (ADMIN) ----------------

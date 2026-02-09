@@ -12,11 +12,12 @@
 <header>
     <h1>myEduPath</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="courses.html">Courses</a>
-        <a href="colleges.html" class="active">Colleges</a>
-        <a href="jobs.html">Jobs</a>
-        <a href="contact.html">Contact</a>
+          <a href="/">Home</a>
+        <a href="courses">Courses</a>
+        <a href="colleges">Colleges</a>
+        <a href="jobs" class="active">Jobs</a>
+        <a href="contact">Contact</a>
+
     </nav>
 </header>
 
@@ -54,7 +55,7 @@ fetch(`http://127.0.0.1:5000/api/college/${collegeId}`)
                 <p>⭐ <b>Rating:</b> ${college.rating}</p>
                 <p><b>Courses Offered:</b> ${college.courses_offered}</p>
 
-                <a href="colleges.html" class="btn small-btn">← Back to Colleges</a>
+                <a href="/colleges" class="btn small-btn">← Back to Colleges</a>
             </div>
         `;
     })
