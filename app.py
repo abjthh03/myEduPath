@@ -233,10 +233,25 @@ def api_job(id):
 
 
 # ---------------- USER AUTH ----------------
-@app.route('/signup')
-def signup_page():
-    return render_template('signup.html')
+@app.route('/signup', methods=["GET", "POST"])
+def signup():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        password = request.form.get("password")
 
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "INSERT INTO users (name, email, password) VALUES (%s, %s, %s)",
+            (name, email, password)
+        )
+        conn.commit()
+        conn.close()
+
+        return redirect("/login")
+
+    return render_template("signup.html")
 
 @app.route('/login')
 def login():
