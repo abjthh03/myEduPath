@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Colleges | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
@@ -13,11 +12,10 @@
     <h1>myEduPath</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
-
+        <a href="/courses">Courses</a>
+        <a href="/colleges" class="active">Colleges</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/contact">Contact</a>
     </nav>
 </header>
 
@@ -30,10 +28,10 @@
     <h2 class="section-title">Browse by Location</h2>
 
     <div class="category-tabs">
-        <span class="category active" onclick="filterColleges('All')">All</span>
-        <span class="category" onclick="filterColleges('Kerala')">Kerala</span>
-        <span class="category" onclick="filterColleges('Bangalore')">Bangalore</span>
-        <span class="category" onclick="filterColleges('Mangalore')">Mangalore</span>
+        <span class="category active" onclick="filterColleges('All', this)">All</span>
+        <span class="category" onclick="filterColleges('Kerala', this)">Kerala</span>
+        <span class="category" onclick="filterColleges('Bangalore', this)">Bangalore</span>
+        <span class="category" onclick="filterColleges('Mangalore', this)">Mangalore</span>
     </div>
 </section>
 
@@ -50,7 +48,8 @@
 <script>
 let allColleges = [];
 
-fetch("http://127.0.0.1:5000/api/colleges")
+// ✅ IMPORTANT FIX — use relative API path
+fetch("/api/colleges")
     .then(res => res.json())
     .then(data => {
         allColleges = data;
@@ -65,16 +64,20 @@ function renderColleges(colleges) {
     const container = document.getElementById("collegeContainer");
     container.innerHTML = "";
 
+    if (colleges.length === 0) {
+        container.innerHTML = "<p>No colleges found</p>";
+        return;
+    }
+
     colleges.forEach(college => {
         container.innerHTML += `
             <div class="college-card" data-location="${college.location}">
                 <h3>${college.college_name}</h3>
                 <p>📍 ${college.location}</p>
-                <p>⭐ Rating: ${college.rating}</p>
-                <p>Courses: ${college.courses_offered}</p>
+                <p>⭐ Rating: ${college.rating || 'N/A'}</p>
+                <p>Courses: ${college.courses_offered || 'Available courses listed'}</p>
 
-                <a href="college-details.html?id=${college.id}"
-                   class="btn small-btn">
+                <a href="#" class="btn small-btn">
                    View Details
                 </a>
             </div>
@@ -82,10 +85,13 @@ function renderColleges(colleges) {
     });
 }
 
-function filterColleges(location) {
+function filterColleges(location, element) {
+    document.querySelectorAll(".category").forEach(c =>
+        c.classList.remove("active")
+    );
+    element.classList.add("active");
+
     const cards = document.querySelectorAll(".college-card");
-    document.querySelectorAll(".category").forEach(c => c.classList.remove("active"));
-    event.target.classList.add("active");
 
     cards.forEach(card => {
         card.style.display =
