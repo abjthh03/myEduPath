@@ -31,29 +31,37 @@ def admin_login_page():
     return render_template("admin-login.html")
 
 
-@app.route("/admin-login", methods=["POST"])
+@app.route("/admin-login", methods=["GET", "POST"])
 def admin_login():
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute(
-        "SELECT * FROM admin WHERE username=%s AND password=%s",
-        (request.form.get("username"), request.form.get("password"))
-    )
-    admin = cursor.fetchone()
-    conn.close()
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
 
-    if admin:
-        session["admin_logged_in"] = True
-        return redirect("/admin-dashboard")
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute(
+            "SELECT * FROM admin WHERE username=%s AND password=%s",
+            (username, password)
+        )
+        admin = cursor.fetchone()
+        conn.close()
 
-    return "Invalid admin credentials"
+        if admin:
+            session["admin_logged_in"] = True
+            return redirect("/admin-dashboard")
 
+        return "Invalid admin credentials"
+
+    return render_template("admin-login.html")
+   
 
 @app.route("/admin-dashboard")
 def admin_dashboard():
     if not session.get("admin_logged_in"):
         return redirect("/admin-login")
-    return send_from_directory(app.static_folder, "admin-dashboard.html")
+
+    return render_template("admin-dashboard.html")
+
 
 
 @app.route("/admin-logout")
