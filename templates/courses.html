@@ -5,7 +5,6 @@
     <title>Courses | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 <body>
 
@@ -13,11 +12,10 @@
     <h1>myEduPath</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
-
+        <a href="/courses" class="active">Courses</a>
+        <a href="/colleges">Colleges</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/contact">Contact</a>
     </nav>
 </header>
 
@@ -37,16 +35,7 @@
 </section>
 
 <section class="home-section">
-    <h2 class="section-title">Course Categories</h2>
-
-    <div class="category-tabs">
-        <span class="category active" onclick="filterCourses('All', this)">All</span>
-        <span class="category" onclick="filterCourses('UG', this)">UG</span>
-        <span class="category" onclick="filterCourses('PG', this)">PG</span>
-        <span class="category" onclick="filterCourses('IT', this)">IT & Computer</span>
-        <span class="category" onclick="filterCourses('Design', this)">Design</span>
-        <span class="category" onclick="filterCourses('Commerce', this)">Commerce</span>
-    </div>
+    <h2 class="section-title">All Courses</h2>
 </section>
 
 <section class="home-section">
@@ -62,8 +51,8 @@
 <script>
 let allCourses = [];
 
-// FETCH COURSES
-fetch("http://127.0.0.1:5000/api/courses")
+// FETCH COURSES FROM API
+fetch("/api/courses")
     .then(res => res.json())
     .then(data => {
         allCourses = data;
@@ -88,31 +77,15 @@ function displayCourses(courses) {
         container.innerHTML += `
             <div class="course-card">
                 <h3>${course.course_name}</h3>
+                <p>${course.description}</p>
                 <p><b>Duration:</b> ${course.duration}</p>
-                <p><b>Eligibility:</b> ${course.eligibility}</p>
-                <p><b>Career:</b> ${course.career_scope}</p>
 
-                <a href="course-details.html?id=${course.id}" class="btn small-btn">
+                <a href="#" class="btn small-btn">
                     View Details
                 </a>
             </div>
         `;
     });
-}
-
-// FILTER COURSES
-function filterCourses(category, element) {
-    document.querySelectorAll(".category").forEach(c =>
-        c.classList.remove("active")
-    );
-    element.classList.add("active");
-
-    if (category === "All") {
-        displayCourses(allCourses);
-    } else {
-        const filtered = allCourses.filter(c => c.category === category);
-        displayCourses(filtered);
-    }
 }
 
 // SEARCH COURSES
