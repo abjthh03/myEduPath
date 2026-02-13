@@ -253,9 +253,30 @@ def signup():
 
     return render_template("signup.html")
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
-    return render_template('login.html')
+    if request.method == "POST":
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute(
+            "SELECT * FROM users WHERE email=%s AND password=%s",
+            (email, password)
+        )
+        user = cursor.fetchone()
+        conn.close()
+
+        if user:
+            session["user_id"] = user["id"]
+            session["user_name"] = user["name"]
+            return redirect("/")
+
+        return "Invalid email or password"
+
+    return render_template("login.html")
+
 
 
 
