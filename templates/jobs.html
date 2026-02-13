@@ -5,7 +5,6 @@
     <title>Jobs | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
 </head>
 <body>
 
@@ -13,10 +12,10 @@
     <h1>myEduPath</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
+        <a href="/courses">Courses</a>
+        <a href="/colleges">Colleges</a>
+        <a href="/jobs" class="active">Jobs</a>
+        <a href="/contact">Contact</a>
     </nav>
 </header>
 
@@ -36,7 +35,7 @@
 </footer>
 
 <script>
-fetch("http://127.0.0.1:5000/api/jobs")
+fetch("/api/jobs")   // ✅ FIXED (no localhost)
     .then(res => res.json())
     .then(data => renderJobs(data))
     .catch(() => {
@@ -48,18 +47,19 @@ function renderJobs(jobs) {
     const container = document.getElementById("jobsContainer");
     container.innerHTML = "";
 
+    if (jobs.length === 0) {
+        container.innerHTML = "<p>No jobs available right now.</p>";
+        return;
+    }
+
     jobs.forEach(job => {
         container.innerHTML += `
             <div class="job-card">
                 <h3>${job.title}</h3>
                 <p><b>Company:</b> ${job.company}</p>
                 <p><b>Location:</b> ${job.location}</p>
-                <p><b>Type:</b> ${job.job_type}</p>
                 <p><b>Salary:</b> ${job.salary}</p>
-
-                <a href="job-details.html?id=${job.id}" class="btn small-btn">
-                    View Details
-                </a>
+                <p>${job.description}</p>
             </div>
         `;
     });
