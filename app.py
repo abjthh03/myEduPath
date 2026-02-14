@@ -278,13 +278,16 @@ def login():
 
         if user:
             session["user_id"] = user["id"]
-            session["user_name"] = user["name"]
-            return redirect("/")
+            session["user_role"] = user["role"]
+
+            if user["role"] == "admin":
+                return redirect("/admin-dashboard")
+            else:
+                return redirect("/")
 
         return "Invalid email or password"
 
     return render_template("login.html")
-
 
 
 
