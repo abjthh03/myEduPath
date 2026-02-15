@@ -376,52 +376,37 @@ footer {
    COURSE CATEGORIES
 ===================== */
 
-.category-tabs {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
+.category-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
 }
 
-.category {
-    padding: 8px 18px;
-    border-radius: 20px;
-    background: var(--card-bg);
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    font-weight: 500;
+.category-card {
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+    text-align: center;
 }
 
-.category.active,
-.category:hover {
-    background: var(--primary);
-    color: white;
-}
-.college-card .btn {
-    margin: 5px 5px 0 0;
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 45px rgba(0,0,0,0.15);
 }
 
-
-.
-
-.home-section {
-    padding: 60px 20px;
+.category-card h3 {
+    margin-bottom: 10px;
+    color: #1db954;
 }
 
-h2 {
-    margin-bottom: 16px;
+.category-card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #555;
 }
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 
 
 /* =========================
