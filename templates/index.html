@@ -39,13 +39,33 @@
     <!-- Theme Toggle (Homepage Only) -->
     <div class="toggle" onclick="toggleTheme()"></div>
 </header>
+
+
     <!-- Hero Section -->
+     
     <section class="hero home-hero">
-    <h2>Find the Right Course & Career Path</h2>
-    <p>
-        Explore courses, colleges and career options tailored for your future.
-        Make confident academic decisions with myEduPath.
-    </p>
+    <div class="hero-container">
+
+        <div class="hero-text">
+            <h2>Find the Right Course & Career Path</h2>
+            <p>
+                Explore courses, colleges and career options tailored for your future.
+                Make confident academic decisions with myEduPath.
+            </p>
+            <a href="/courses" class="btn secondary-btn">
+                Explore Popular Courses
+            </a>
+        </div>
+
+        <div class="hero-image">
+            <img src="{{ url_for('static', filename='images/students.png') }}" alt="Students">
+        </div>
+
+    </div>
+</section>
+
+
+
 <!-- =====================
      Popular Courses Section
 ===================== -->

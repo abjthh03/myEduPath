@@ -676,3 +676,49 @@ h2 {
   50%  { transform: translate(25px, -35px); }
   100% { transform: translate(0, 0); }
 }
+
+/* =====================
+   Hero Section Layout
+===================== */
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 8%;
+    flex-wrap: wrap;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h2 {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-image img {
+    max-width: 100%;
+    height: auto;
+    animation: floatImage 4s ease-in-out infinite;
+}
+
+/* Floating animation */
+@keyframes floatImage {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
