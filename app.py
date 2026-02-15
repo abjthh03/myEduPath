@@ -253,7 +253,7 @@ def view_applications():
     applications = cursor.fetchall()
     conn.close()
 
-    return render_template("view-applications.html", applications=applications)
+    return render_template("admin-applications.html", applications=applications)
 
 
 
