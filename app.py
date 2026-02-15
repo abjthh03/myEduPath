@@ -33,6 +33,27 @@ def contact():
     return render_template('contact.html')
 
 
+@app.route("/api/contact", methods=["POST"])
+def api_contact():
+    data = request.get_json()
+
+    name = data.get("name")
+    email = data.get("email")
+    subject = data.get("subject")
+    message = data.get("message")
+
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT INTO contacts (name, email, subject, message)
+        VALUES (%s, %s, %s, %s)
+    """, (name, email, subject, message))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"success": True})
+
+
 # ---------------- USER AUTH ----------------
 @app.route('/signup', methods=["GET", "POST"])
 def signup():
