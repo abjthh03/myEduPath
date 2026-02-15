@@ -164,7 +164,7 @@ def add_course():
 
 
 # ---------------- ADMIN: JOBS ----------------
-@app.route("/add-job-form")
+@app.route("/admin/add-job")
 def add_job_form():
     if session.get("user_role") != "admin":
         return "Access denied"
@@ -205,6 +205,20 @@ def add_job():
     conn.close()
 
     return redirect("/admin-dashboard")
+
+
+@app.route("/api/job/<int:job_id>")
+def api_single_job(job_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM jobs WHERE id = %s", (job_id,))
+    job = cursor.fetchone()
+    conn.close()
+
+    if job:
+        return jsonify(job)
+    else:
+        return jsonify({"error": "Job not found"}), 404
 
 
 # ---------------- PUBLIC API ----------------
