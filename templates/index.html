@@ -195,31 +195,35 @@
 <!-- =====================
      Stats Section
 ===================== -->
+<!-- =====================
+     Stats Section
+===================== -->
 <section class="home-section">
     <div class="stats">
 
         <div class="stat">
-            <h2>20+</h2>
+            <h2 class="counter" data-target="20">0+</h2>
             <p>Courses</p>
         </div>
 
         <div class="stat">
-            <h2>30+</h2>
+            <h2 class="counter" data-target="30">0+</h2>
             <p>Colleges</p>
         </div>
 
         <div class="stat">
-            <h2>200+</h2>
+            <h2 class="counter" data-target="200">0+</h2>
             <p>Career Options</p>
         </div>
 
         <div class="stat">
-            <h2>1000+</h2>
+            <h2 class="counter" data-target="1000">0+</h2>
             <p>Students Guided</p>
         </div>
 
     </div>
 </section>
+
 
     <!-- Search Box (UI Only) -->
     <div class="search-box">
@@ -253,7 +257,8 @@
     <footer>
         <p>© 2026 myEduPath | BCA Final Year Project</p>
     </footer>
-<script src="js/main.js"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 
 </body>
 </html>
