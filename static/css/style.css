@@ -754,3 +754,29 @@ footer {
     background: white;
     color: black;
 }
+
+/* =====================
+   Logo Styling
+===================== */
+
+.logo img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 8%;
+}
+
+.logo img {
+    height: 42px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.05);
+}
