@@ -43,26 +43,28 @@
 
     <!-- Hero Section -->
      
-    <section class="hero home-hero">
-    <div class="hero-container">
+   <section class="premium-hero">
+    
+    <img src="{{ url_for('static', filename='images/students.png') }}" 
+         class="hero-bg" alt="Students">
 
-        <div class="hero-text">
-            <h2>Find the Right Course & Career Path</h2>
-            <p>
-                Explore courses, colleges and career options tailored for your future.
-                Make confident academic decisions with myEduPath.
-            </p>
-            <a href="/courses" class="btn secondary-btn">
-                Explore Popular Courses
-            </a>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+        <h1>Find the Right Course & Career Path</h1>
+        <p>
+            Explore courses, colleges and career options tailored for your future.
+            Make confident academic decisions with myEduPath.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="/courses" class="btn primary-btn">Explore Courses</a>
+            <a href="/signup" class="btn outline-btn">Get Started</a>
         </div>
-
-        <div class="hero-image">
-            <img src="{{ url_for('static', filename='images/students.png') }}" alt="Students">
-        </div>
-
     </div>
+
 </section>
+
 
 
 
