@@ -131,12 +131,13 @@ def admin_logout():
 
 
 # ---------------- ADMIN: COURSES ----------------
-@app.route("/add-course-form")
+@app.route("/admin/add-course")
 def add_course_form():
     if session.get("user_role") != "admin":
-        return "Access denied"
+        return redirect("/admin-login")
 
-    return send_from_directory(app.static_folder, "add-course.html")
+    return render_template("add-course.html")
+
 
 
 @app.route("/add-course", methods=["POST"])
@@ -237,9 +238,9 @@ def api_jobs():
     return jsonify(data)
 
 
-@app.route("/view-applications")
+@app.route("/admin/applications")
 def view_applications():
-    if not session.get("admin_logged_in"):
+    if session.get("user_role") != "admin":
         return redirect("/admin-login")
 
     conn = get_db_connection()
@@ -254,7 +255,6 @@ def view_applications():
     conn.close()
 
     return render_template("admin-applications.html", applications=applications)
-
 
 
 # ---------------- RUN ----------------
