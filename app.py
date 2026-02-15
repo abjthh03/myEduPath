@@ -237,6 +237,26 @@ def api_jobs():
     return jsonify(data)
 
 
+@app.route("/view-applications")
+def view_applications():
+    if not session.get("admin_logged_in"):
+        return redirect("/admin-login")
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("""
+        SELECT ja.*, j.title AS job_title, j.company
+        FROM job_applications ja
+        JOIN jobs j ON ja.job_id = j.id
+        ORDER BY ja.created_at DESC
+    """)
+    applications = cursor.fetchall()
+    conn.close()
+
+    return render_template("view-applications.html", applications=applications)
+
+
+
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
