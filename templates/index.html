@@ -20,28 +20,31 @@
 </div>
 
 
-    <!-- Header -->
-   <header>
-   <a href="/" class="logo">
-    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="myEduPath Logo">
-</a>
+    <!------- Header------->
 
+  <header class="navbar">
 
-   <nav>
-         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
+    <div class="nav-left">
+        <a href="/" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="myEduPath">
+        </a>
+    </div>
 
-    <!-- AUTH BUTTONS -->
-    <a href="/login" class="btn nav-btn">Login</a>
-    <a href="/signup" class="btn nav-btn outline">Sign Up</a>
-</nav>
+    <div class="nav-center">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/colleges">Colleges</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/contact">Contact</a>
+    </div>
 
-    <!-- Theme Toggle (Homepage Only) -->
-    <div class="toggle" onclick="toggleTheme()"></div>
+    <div class="nav-right">
+        <a href="/login" class="btn login-btn">Login</a>
+        <a href="/signup" class="btn signup-btn">Sign Up</a>
+    </div>
+
 </header>
+
 
 
     <!-- Hero Section -->
