@@ -70,6 +70,34 @@ body {
     transition: all 0.4s ease;
 }
 
+/* =====================
+   HEADER
+===================== */
+
+header {
+    background: var(--header-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    color: var(--primary);
+    margin: 0;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
 
 /* =====================
    THEME TOGGLE SWITCH
@@ -730,6 +758,12 @@ footer {
 /* =====================
    Logo Styling
 ===================== */
+.logo img {
+    height: 65px;      /* Bigger logo */
+    width: auto;
+    object-fit: contain;
+}
+
 
 header {
     display: flex;
@@ -740,7 +774,10 @@ header {
 }
 
 
-
+.logo img {
+    height: 42px;
+    transition: transform 0.3s ease;
+}
 
 .logo img:hover {
     transform: scale(1.05);
@@ -750,67 +787,7 @@ header {
     align-items: center;
 }
 
-
-
-
-/* =====================
-   CLEAN PREMIUM NAVBAR
-===================== */
-
-header {
-    background: var(--header-bg);
-    height: 85px;
-    padding: 0 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: var(--shadow);
-}
-
-/* Logo */
-.logo {
-    display: flex;
-    align-items: center;
-}
-
 .logo img {
-    height: 55px;
-    width: auto;
-}
-
-/* Navigation Links */
-nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-nav a:hover {
-    color: var(--primary);
-}
-
-/* Login / Signup Buttons */
-.nav-btn {
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.nav-btn.outline {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary) !important;
-}
-
-.nav-btn:not(.outline) {
-    background: var(--primary);
-    color: white !important;
+    height: 70px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
 }
