@@ -758,19 +758,21 @@ footer {
 /* =====================
    Logo Styling
 ===================== */
-
 .logo img {
-    height: 42px;
+    height: 65px;      /* Bigger logo */
     width: auto;
     object-fit: contain;
 }
+
 
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 8%;
+    padding: 10px 8%;
+    height: 85px;   /* Add fixed height */
 }
+
 
 .logo img {
     height: 42px;
@@ -779,4 +781,13 @@ header {
 
 .logo img:hover {
     transform: scale(1.05);
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 70px;
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
 }
