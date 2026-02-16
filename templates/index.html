@@ -19,30 +19,30 @@
   <span class="icon" data-speed="2.2">📝</span>
 </div>
 
-
-    <!------- Header------->
 <!-- Header -->
-   <header>
+  
+<header class="main-header">
+
     <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="myEduPath">
         </a>
     </div>
 
-   <nav>
-         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
+    <nav class="main-nav">
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/colleges">Colleges</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/contact">Contact</a>
+    </nav>
 
-    <!-- AUTH BUTTONS -->
-    <a href="/login" class="btn nav-btn">Login</a>
-    <a href="/signup" class="btn nav-btn outline">Sign Up</a>
-</nav>
+    <div class="nav-right">
+        <a href="/login" class="nav-btn outline">Login</a>
+        <a href="/signup" class="nav-btn">Sign Up</a>
+        <div class="toggle" onclick="toggleTheme()"></div>
+    </div>
 
-    <!-- Theme Toggle (Homepage Only) -->
-    <div class="toggle" onclick="toggleTheme()"></div>
 </header>
 
 

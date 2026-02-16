@@ -464,24 +464,7 @@ footer {
 .course-card .btn:hover {
     transform: scale(1.05);
 }
-.nav-btn {
-    padding: 8px 18px;
-    border-radius: 20px;
-    background: #22c55e;
-    color: white !important;
-    margin-left: 10px;
-    font-size: 14px;
-}
 
-.nav-btn.outline {
-    background: transparent;
-    border: 2px solid #22c55e;
-    color: #22c55e !important;
-}
-
-.nav-btn:hover {
-    opacity: 0.9;
-}
 .jobs-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -727,39 +710,88 @@ footer {
     color: black;
 }
 
-/* =====================
-   Logo Styling
-===================== */
-.logo img {
-    height: 65px;      /* Bigger logo */
-    width: auto;
-    object-fit: contain;
-}
-
+/* =========================
+        NAVBAR
+========================= */
 
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 85px;
+    background: var(--header-bg);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 8%;
-    height: 85px;   /* Add fixed height */
+    padding: 0 8%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    z-index: 1000;
 }
 
-
-.logo img {
-    height: 42px;
-    transition: transform 0.3s ease;
+/* Prevent content hiding */
+body {
+    padding-top: 85px;
 }
 
-.logo img:hover {
-    transform: scale(1.05);
-}
+/* LOGO */
 .logo {
     display: flex;
     align-items: center;
 }
 
 .logo img {
-    height: 70px;
-    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
+
+.logo img:hover {
+    transform: scale(1.05);
+}
+
+/* NAV LINKS */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--text-color);
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* LOGIN / SIGNUP BUTTONS */
+.nav-btn {
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.nav-btn.outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary) !important;
+}
+
+.nav-btn:not(.outline) {
+    background: var(--primary);
+    color: white !important;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+}
+
+
