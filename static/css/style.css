@@ -1095,9 +1095,7 @@ body.dark .logo-main {
 }
 
 
-/* ========================
-   JOB PAGE PREMIUM STYLE
-======================== */
+
 /* =========================
    GLOBAL NAVBAR (UNIFIED)
 ========================= */
@@ -1206,4 +1204,17 @@ body.dark .logo-main {
 .apply-btn:hover {
     background: #16a34a;
     transform: scale(1.05);
+}
+
+
+/* =========================
+      user dashboard
+========================= */
+
+.dashboard-cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
 }
