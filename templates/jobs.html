@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <title>Jobs | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<header>
-    <h1>myEduPath</h1>
+<!-- PREMIUM NAVBAR -->
+<header class="navbar">
+    <div class="logo">
+        <a href="/">my<span>Edu</span>Path ↗</a>
+    </div>
+
     <nav>
         <a href="/">Home</a>
         <a href="/courses">Courses</a>
@@ -19,59 +27,26 @@
     </nav>
 </header>
 
-<section class="hero home-hero">
-    <h2>Job Opportunities</h2>
-    <p>Explore latest jobs and internships for students</p>
+<!-- HERO -->
+<section class="jobs-hero">
+    <h1>Job Opportunities</h1>
+    <p>Explore internships and full-time roles tailored for students.</p>
 </section>
 
-<section class="home-section">
+<!-- JOB LIST -->
+<section class="jobs-section">
     <div id="jobsContainer" class="jobs-grid">
         <p>Loading jobs...</p>
     </div>
 </section>
 
-<footer>
-    <p>© 2026 myEduPath | BCA Final Year Project</p>
-</footer>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Jobs | myEduPath</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-
-<header>
-    <h1>myEduPath</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/courses">Courses</a>
-        <a href="/colleges">Colleges</a>
-        <a href="/jobs" class="active">Jobs</a>
-        <a href="/contact">Contact</a>
-    </nav>
-</header>
-
-<section class="hero home-hero">
-    <h2>Job Opportunities</h2>
-    <p>Explore latest jobs and internships for students</p>
-</section>
-
-<section class="home-section">
-    <div id="jobsContainer" class="jobs-grid">
-        <p>Loading jobs...</p>
-    </div>
-</section>
-
+<!-- FOOTER -->
 <footer>
     <p>© 2026 myEduPath | BCA Final Year Project</p>
 </footer>
 
 <script>
-fetch("/api/jobs")   // ✅ FIXED (no localhost)
+fetch("/api/jobs")
     .then(res => res.json())
     .then(data => renderJobs(data))
     .catch(() => {
@@ -92,33 +67,24 @@ function renderJobs(jobs) {
         container.innerHTML += `
             <div class="job-card">
                 <h3>${job.title}</h3>
-                <p><b>Company:</b> ${job.company}</p>
-                <p><b>Location:</b> ${job.location}</p>
-                <p><b>Salary:</b> ${job.salary}</p>
-                <p>${job.description}</p>
+                <p><strong>Company:</strong> ${job.company}</p>
+                <p><strong>Location:</strong> ${job.location}</p>
+                <p><strong>Salary:</strong> ${job.salary}</p>
+                <p class="job-desc">${job.description}</p>
+
+                <button class="apply-btn"
+                    onclick="applyNow('${job.title}','${job.company}')">
+                    Apply Now
+                </button>
             </div>
         `;
     });
 }
+
+function applyNow(title, company) {
+    alert("Application submitted for " + title + " at " + company + " 🚀");
+}
 </script>
-
-<!-- Apply Modal -->
-<div id="applyModal" class="apply-modal">
-    <div class="apply-box">
-        <span class="close-btn" onclick="closeApplyModal()">×</span>
-        <h3 id="applyJobTitle"></h3>
-
-        <form>
-            <input type="text" placeholder="Your Full Name" required>
-            <input type="email" placeholder="Your Email" required>
-            <textarea placeholder="Why should we hire you?" rows="4"></textarea>
-
-            <button type="submit" class="submit-btn">
-                Submit Application
-            </button>
-        </form>
-    </div>
-</div>
 
 </body>
 </html>

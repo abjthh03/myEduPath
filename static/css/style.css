@@ -1093,3 +1093,105 @@ body.dark .logo-main {
     cursor: pointer;
     font-size: 20px;
 }
+
+
+/* ========================
+   JOB PAGE PREMIUM STYLE
+======================== */
+
+.navbar {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 8%;
+    background: linear-gradient(90deg, #0f172a, #111827);
+    color: white;
+}
+
+.navbar .logo a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 22px;
+    color: white;
+}
+
+.navbar .logo span {
+    color: #22c55e;
+}
+
+.navbar nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.navbar nav a:hover,
+.navbar nav .active {
+    color: #22c55e;
+}
+
+.jobs-hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.jobs-hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.jobs-hero p {
+    opacity: 0.8;
+}
+
+.jobs-section {
+    padding: 40px 8%;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.job-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-6px);
+}
+
+.job-card h3 {
+    color: #22c55e;
+    margin-bottom: 12px;
+}
+
+.job-desc {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.apply-btn {
+    margin-top: 20px;
+    padding: 10px 22px;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.apply-btn:hover {
+    background: #16a34a;
+    transform: scale(1.05);
+}
