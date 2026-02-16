@@ -710,9 +710,9 @@ footer {
     color: black;
 }
 
-/* =========================
-        NAVBAR
-========================= */
+/* =======================
+         NAVBAR
+======================= */
 
 header {
     position: fixed;
@@ -723,18 +723,17 @@ header {
     background: var(--header-bg);
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 8%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: var(--shadow);
     z-index: 1000;
 }
 
-/* Prevent content hiding */
+/* Prevent hero hiding under navbar */
 body {
     padding-top: 85px;
 }
 
-/* LOGO */
+/* Left logo */
 .logo {
     display: flex;
     align-items: center;
@@ -743,21 +742,17 @@ body {
 .logo img {
     height: 55px;
     width: auto;
-    object-fit: contain;
-    transition: transform 0.3s ease;
 }
 
-.logo img:hover {
-    transform: scale(1.05);
-}
-
-/* NAV LINKS */
+/* Middle navigation links */
 nav {
     display: flex;
     align-items: center;
-    gap: 35px;
+    gap: 30px;
+    margin-left: auto;
 }
 
+/* Nav links */
 nav a {
     text-decoration: none;
     font-weight: 600;
@@ -769,29 +764,34 @@ nav a:hover {
     color: var(--primary);
 }
 
-/* LOGIN / SIGNUP BUTTONS */
+/* Login / Logout / Signup buttons */
 .nav-btn {
     padding: 8px 18px;
-    border-radius: 30px;
+    border-radius: 25px;
     font-size: 14px;
     font-weight: 600;
     text-decoration: none;
     transition: 0.3s ease;
 }
 
+/* Filled button */
+.nav-btn:not(.outline) {
+    background: var(--primary);
+    color: white !important;
+}
+
+/* Outline button */
 .nav-btn.outline {
     background: transparent;
     border: 2px solid var(--primary);
     color: var(--primary) !important;
 }
 
-.nav-btn:not(.outline) {
-    background: var(--primary);
-    color: white !important;
-}
-
 .nav-btn:hover {
     transform: translateY(-2px);
 }
 
-
+/* Dark mode toggle aligned properly */
+.toggle {
+    margin-left: 20px;
+}
