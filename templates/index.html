@@ -387,6 +387,16 @@ window.addEventListener("click", (e) => {
 });
 </script>
 
+<script>
+document.querySelector(".load-more-btn").addEventListener("click", function() {
+    document.querySelectorAll(".hidden-career").forEach(function(card) {
+        card.style.display = "block";
+    });
+
+    this.style.display = "none";
+});
+</script>
+
 </body>
 </html>
 
