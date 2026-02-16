@@ -814,3 +814,72 @@ body.dark .navbar {
 body {
     padding-top: 80px;
 }
+
+
+/* ===============================
+           LOGO
+================================ */
+
+.logo-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    letter-spacing: -0.5px;
+    transition: 0.4s ease;
+    position: relative;
+}
+
+/* Main text */
+.logo-main {
+    color: #1e293b;
+}
+
+/* Gradient animated accent */
+.logo-accent {
+    background: linear-gradient(
+        90deg,
+        #22c55e,
+        #16a34a,
+        #22c55e
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 4s linear infinite;
+}
+
+/* Arrow */
+.logo-arrow {
+    font-size: 18px;
+    color: #22c55e;
+    margin-left: 6px;
+    transition: 0.4s ease;
+}
+
+/* Hover arrow move */
+.logo-text:hover .logo-arrow {
+    transform: translate(5px, -5px);
+}
+
+/* Glow pulse */
+.logo-text::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 12px;
+    opacity: 0;
+    transition: 0.4s ease;
+}
+
+.logo-text:hover::after {
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+}
+
+/* Floating micro effect */
+.logo-text {
+    animation: floatLogo 6s ease
