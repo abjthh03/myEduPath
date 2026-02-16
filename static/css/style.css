@@ -237,30 +237,83 @@ footer {
    CAREER PATHS
 ===================== */
 
-.career-cards {
-    display: flex;
-    justify-content: center;
+.career-section {
+    padding: 100px 8%;
+    text-align: center;
+    background: linear-gradient(to bottom, #0f172a, #111827);
+    color: white;
+}
+
+.section-title {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    opacity: 0.7;
+    margin-bottom: 60px;
+    font-size: 16px;
+}
+
+.career-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
-    flex-wrap: wrap;
 }
 
 .career-card {
-    background: var(--card-bg);
-    width: 260px;
-    padding: 25px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
-    box-shadow: var(--shadow);
-    transition: transform 0.4s ease;
+    padding: 35px;
     text-align: left;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
 }
 
 .career-card:hover {
     transform: translateY(-10px);
+    background: rgba(34,197,94,0.1);
+    border-color: #22c55e;
+}
+
+.career-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
 }
 
 .career-card h3 {
-    color: var(--primary);
+    margin-bottom: 10px;
+    font-size: 20px;
 }
+
+.career-card p {
+    opacity: 0.7;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.career-courses {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+}
+
+.career-link {
+    text-decoration: none;
+    color: #22c55e;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.career-link:hover {
+    letter-spacing: 1px;
+}
+
 /* =====================
    WHY MYEDUPATH
 ===================== */
