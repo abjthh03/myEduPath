@@ -173,39 +173,38 @@
 
     <div class="career-grid">
 
-        <div class="career-card">
-            <div class="career-icon">💻</div>
-            <h3>Software Developer</h3>
-            <p>Build scalable web and mobile applications.</p>
-            <span class="career-courses">BCA, BSc CS, MCA</span>
-            <a href="#" class="career-link">View Path →</a>
-        </div>
+    <div class="career-card" 
+         data-title="Software Developer"
+         data-desc="Develop web, mobile, and enterprise applications."
+         data-skills="JavaScript, Python, React, SQL"
+         data-salary="₹4L – ₹18L per year"
+         data-courses="BCA, BSc CS, MCA">
 
-        <div class="career-card">
-            <div class="career-icon">🎨</div>
-            <h3>UI/UX Designer</h3>
-            <p>Create intuitive and beautiful digital experiences.</p>
-            <span class="career-courses">UI/UX Design, BCA</span>
-            <a href="#" class="career-link">View Path →</a>
-        </div>
-
-        <div class="career-card">
-            <div class="career-icon">📊</div>
-            <h3>Data Analyst</h3>
-            <p>Turn raw data into business insights.</p>
-            <span class="career-courses">BSc CS, Data Science</span>
-            <a href="#" class="career-link">View Path →</a>
-        </div>
-
-        <div class="career-card">
-            <div class="career-icon">📈</div>
-            <h3>Digital Marketer</h3>
-            <p>Grow brands using digital platforms.</p>
-            <span class="career-courses">BCom, Digital Marketing</span>
-            <a href="#" class="career-link">View Path →</a>
-        </div>
-
+        <div class="career-icon">💻</div>
+        <h3>Software Developer</h3>
+        <p>Build scalable web & mobile apps.</p>
+        <span class="career-link">View Details →</span>
     </div>
+
+    <div class="career-card" 
+         data-title="UI/UX Designer"
+         data-desc="Design intuitive and engaging user experiences."
+         data-skills="Figma, Adobe XD, Prototyping"
+         data-salary="₹3L – ₹15L per year"
+         data-courses="UI/UX Design, BCA">
+
+        <div class="career-icon">🎨</div>
+        <h3>UI/UX Designer</h3>
+        <p>Create beautiful digital experiences.</p>
+        <span class="career-link">View Details →</span>
+    </div>
+
+    <!-- ADD AS MANY CAREERS AS YOU WANT SAME STRUCTURE -->
+
+</div>
+
+<button class="load-more-btn">Load More Careers</button>
+
 </section>
 
 
@@ -307,5 +306,62 @@
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 
+
+<div class="career-modal" id="careerModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDesc"></p>
+
+        <div class="modal-section">
+            <strong>Skills Required:</strong>
+            <p id="modalSkills"></p>
+        </div>
+
+        <div class="modal-section">
+            <strong>Salary Range:</strong>
+            <p id="modalSalary"></p>
+        </div>
+
+        <div class="modal-section">
+            <strong>Recommended Courses:</strong>
+            <p id="modalCourses"></p>
+        </div>
+
+        <a href="#" class="primary-btn">Explore Courses</a>
+    </div>
+</div>
+
+
+<!-- Career Modal Script -->
+
+<script>
+const cards = document.querySelectorAll(".career-card");
+const modal = document.getElementById("careerModal");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        document.getElementById("modalTitle").innerText = card.dataset.title;
+        document.getElementById("modalDesc").innerText = card.dataset.desc;
+        document.getElementById("modalSkills").innerText = card.dataset.skills;
+        document.getElementById("modalSalary").innerText = card.dataset.salary;
+        document.getElementById("modalCourses").innerText = card.dataset.courses;
+
+        modal.style.display = "flex";
+    });
+});
+
+document.querySelector(".close-modal").addEventListener("click", () => {
+    modal.style.display = "none";
+});
+
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
+</script>
+
 </body>
 </html>
+
