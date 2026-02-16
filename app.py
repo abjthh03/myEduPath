@@ -98,8 +98,8 @@ def login():
             if user["role"] == "admin":
                 return redirect("/admin-dashboard")
 
-            return redirect("/")
-
+           return redirect("/dashboard")
+       
         return "Invalid email or password"
 
     return render_template("login.html")
