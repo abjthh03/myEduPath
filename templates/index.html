@@ -21,29 +21,29 @@
 
 
     <!------- Header------->
-<header>
-
+<!-- Header -->
+   <header>
     <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/logo.png') }}" alt="myEduPath">
         </a>
     </div>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/courses">Courses</a>
-        <a href="/colleges">Colleges</a>
-        <a href="/jobs">Jobs</a>
-        <a href="/contact">Contact</a>
-    </nav>
+   <nav>
+         <a href="/">Home</a>
+        <a href="courses">Courses</a>
+        <a href="colleges">Colleges</a>
+        <a href="jobs" class="active">Jobs</a>
+        <a href="contact">Contact</a>
 
-    <div>
-        <a href="/login" class="nav-btn outline">Login</a>
-        <a href="/signup" class="nav-btn">Sign Up</a>
-    </div>
+    <!-- AUTH BUTTONS -->
+    <a href="/login" class="btn nav-btn">Login</a>
+    <a href="/signup" class="btn nav-btn outline">Sign Up</a>
+</nav>
 
+    <!-- Theme Toggle (Homepage Only) -->
+    <div class="toggle" onclick="toggleTheme()"></div>
 </header>
-
 
 
     <!-- Hero Section -->
