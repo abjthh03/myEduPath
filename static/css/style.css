@@ -1098,40 +1098,52 @@ body.dark .logo-main {
 /* ========================
    JOB PAGE PREMIUM STYLE
 ======================== */
+/* =========================
+   GLOBAL NAVBAR (UNIFIED)
+========================= */
 
-.navbar {
+.main-navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #0f172a, #111827);
+    padding: 18px 0;
     font-family: 'Poppins', sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    width: 85%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 18px 8%;
-    background: linear-gradient(90deg, #0f172a, #111827);
-    color: white;
 }
 
-.navbar .logo a {
+.logo a {
     text-decoration: none;
+    font-size: 24px;
     font-weight: 700;
-    font-size: 22px;
     color: white;
 }
 
-.navbar .logo span {
+.logo span {
     color: #22c55e;
 }
 
-.navbar nav a {
-    color: #cbd5e1;
+.nav-links a {
+    margin-left: 30px;
     text-decoration: none;
-    margin-left: 25px;
+    color: #cbd5e1;
     font-weight: 500;
     transition: 0.3s ease;
 }
 
-.navbar nav a:hover,
-.navbar nav .active {
+.nav-links a:hover,
+.nav-links a.active {
     color: #22c55e;
 }
+
 
 .jobs-hero {
     text-align: center;
