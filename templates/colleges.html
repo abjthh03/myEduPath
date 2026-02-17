@@ -166,24 +166,27 @@ function displayColleges(colleges) {
         container.innerHTML += `
             <div class="college-card">
                 <h3>${college.college_name}</h3>
-                <div class="location">📍 ${college.location}</div>
 
-                <span class="badge ${college.type === 'Government' ? 'govt' : 'private'}">
-                    ${college.type || 'Private'}
-                </span>
+                <div>📍 ${college.location}</div>
 
-                <div style="margin-top:8px; font-size:14px; opacity:0.8;">
-                    ${college.university || ''}
+                ${college.university ? 
+                    `<div style="margin-top:6px; font-size:14px; opacity:0.8;">
+                        🎓 ${college.university}
+                    </div>` : ""
+                }
+
+                <div style="margin-top:6px;">
+                    ⭐ ${college.type || "Private"}
                 </div>
 
-                <a href="/college/${college.id}" class="btn">
-    View Details
-</a>
-
+                <a href="/college/${college.id}" class="btn" style="margin-top:15px; display:inline-block;">
+                    View Details
+                </a>
             </div>
         `;
     });
 }
+
 
 function filterLocation(location) {
     if (location === 'all') {
