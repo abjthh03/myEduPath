@@ -292,11 +292,6 @@ def view_applications():
     return render_template("admin-applications.html", applications=applications)
 
 
-# ---------------- RUN ----------------
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
-
 
 #------------user dashboard------------
 
@@ -316,6 +311,7 @@ def dashboard():
 
 
 #---------user account--------
+
 @app.route("/account")
 def account():
     if "user_id" not in session:
@@ -329,3 +325,8 @@ def account():
 
     return render_template("account.html", user=user)
 
+
+# ---------------- RUN ----------------
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host="0.0.0.0", port=port)
