@@ -76,11 +76,10 @@ function renderJobs(jobs) {
                 <p><strong>Salary:</strong> ${job.salary}</p>
                 <p class="job-desc">${job.description}</p>
 
-                <button class="apply-btn"
-                    onclick="applyNow('${job.title}','${job.company}')">
-                    Apply Now
-                </button>
-            </div>
+                <a href="/job-details?id=${job.id}" class="apply-btn">
+                    View Details
+                </a>
+         </div>
         `;
     });
 }

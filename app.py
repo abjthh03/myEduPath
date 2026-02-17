@@ -27,6 +27,11 @@ def colleges():
 def jobs():
     return render_template('jobs.html')
 
+@app.route("/job-details")
+def job_details():
+    return render_template("job-details.html")
+
+
 
 @app.route('/contact')
 def contact():
