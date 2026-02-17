@@ -32,8 +32,8 @@
 </footer>
 
 <script>
-const params = new URLSearchParams(window.location.search);
-const collegeId = params.get("id");
+const collegeId = window.location.pathname.split("/").pop();
+
 
 console.log("College ID:", collegeId);
 
@@ -42,7 +42,8 @@ if (!collegeId) {
         "<p>Invalid college ID ❌</p>";
 }
 
-fetch(`http://127.0.0.1:5000/api/college/${collegeId}`)
+fetch(`/api/college/${collegeId}`)
+
     .then(res => {
         if (!res.ok) throw new Error("College not found");
         return res.json();
