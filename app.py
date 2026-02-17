@@ -295,7 +295,7 @@ def view_applications():
 
 #------------user dashboard------------
 
-f@app.route("/dashboard")
+@app.route("/dashboard")
 def dashboard():
     if "user_id" not in session:
         return redirect("/login")
