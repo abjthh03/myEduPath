@@ -439,7 +439,23 @@ def api_single_course(course_id):
         return jsonify(course)
     else:
         return jsonify({"error": "Course not found"}), 404
+    
+    
+    # -------- COLLEGE DETAILS --------
+@app.route("/college/<int:college_id>")
+def college_details(college_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
 
+    cursor.execute("SELECT * FROM colleges WHERE id = %s", (college_id,))
+    college = cursor.fetchone()
+
+    conn.close()
+
+    if not college:
+        return "College not found", 404
+
+    return render_template("college-details.html", college=college)
 
 
 # ---------------- RUN ----------------

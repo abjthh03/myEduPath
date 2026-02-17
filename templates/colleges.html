@@ -1,66 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Colleges | myEduPath</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="UTF-8">
+<title>Explore Colleges | myEduPath</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    opacity: 0.8;
+}
+
+/* FILTER TABS */
+.filters {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.filter-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+
+/* GRID */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+.college-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* CARD */
+.college-card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.college-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.15);
+}
+
+.college-card h3 {
+    margin: 0 0 10px;
+    font-size: 20px;
+}
+
+.location {
+    font-size: 14px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.govt {
+    background: #3498db;
+}
+
+.private {
+    background: #e67e22;
+}
+
+.view-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: #2ecc71;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-<header>
-    <h1>myEduPath</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/courses">Courses</a>
-        <a href="/colleges" class="active">Colleges</a>
-        <a href="/jobs">Jobs</a>
-        <a href="/contact">Contact</a>
-    </nav>
-</header>
-
-<section class="hero home-hero">
-    <h2>Explore Colleges</h2>
-    <p>Find top colleges across Kerala, Bangalore and Mangalore</p>
+<section class="hero">
+    <h1>Explore Colleges</h1>
+    <p>Discover top institutions across India</p>
 </section>
 
-<section class="home-section">
-    <h2 class="section-title">Browse by Location</h2>
+<div class="filters">
+    <button class="filter-btn" onclick="filterLocation('all')">All</button>
+    <button class="filter-btn" onclick="filterLocation('Kerala')">Kerala</button>
+    <button class="filter-btn" onclick="filterLocation('Bangalore')">Bangalore</button>
+    <button class="filter-btn" onclick="filterLocation('Mangalore')">Mangalore</button>
+</div>
 
-    <div class="category-tabs">
-        <span class="category active" onclick="filterColleges('All', this)">All</span>
-        <span class="category" onclick="filterColleges('Kerala', this)">Kerala</span>
-        <span class="category" onclick="filterColleges('Bangalore', this)">Bangalore</span>
-        <span class="category" onclick="filterColleges('Mangalore', this)">Mangalore</span>
-    </div>
-</section>
-
-<section class="home-section">
-    <div id="collegeContainer" class="college-cards">
+<div class="container">
+    <div id="collegeContainer" class="college-grid">
         <p>Loading colleges...</p>
     </div>
-</section>
-
-<footer>
-    <p>© 2026 myEduPath | BCA Final Year Project</p>
-</footer>
+</div>
 
 <script>
 let allColleges = [];
 
-// ✅ IMPORTANT FIX — use relative API path
 fetch("/api/colleges")
-    .then(res => res.json())
-    .then(data => {
-        allColleges = data;
-        renderColleges(allColleges);
-    })
-    .catch(() => {
-        document.getElementById("collegeContainer").innerHTML =
-            "<p>Failed to load colleges ❌</p>";
-    });
+.then(res => res.json())
+.then(data => {
+    allColleges = data;
+    displayColleges(allColleges);
+})
+.catch(() => {
+    document.getElementById("collegeContainer").innerHTML =
+        "<p>Failed to load colleges ❌</p>";
+});
 
-function renderColleges(colleges) {
+function displayColleges(colleges) {
     const container = document.getElementById("collegeContainer");
     container.innerHTML = "";
 
@@ -71,34 +164,38 @@ function renderColleges(colleges) {
 
     colleges.forEach(college => {
         container.innerHTML += `
-            <div class="college-card" data-location="${college.location}">
+            <div class="college-card">
                 <h3>${college.college_name}</h3>
-                <p>📍 ${college.location}</p>
-                <p>⭐ Rating: ${college.rating || 'N/A'}</p>
-                <p>Courses: ${college.courses_offered || 'Available courses listed'}</p>
+                <div class="location">📍 ${college.location}</div>
 
-                <a href="#" class="btn small-btn">
-                   View Details
-                </a>
+                <span class="badge ${college.type === 'Government' ? 'govt' : 'private'}">
+                    ${college.type || 'Private'}
+                </span>
+
+                <div style="margin-top:8px; font-size:14px; opacity:0.8;">
+                    ${college.university || ''}
+                </div>
+
+                <a href="/college/${college.id}" class="btn">
+    View Details
+</a>
+
             </div>
         `;
     });
 }
 
-function filterColleges(location, element) {
-    document.querySelectorAll(".category").forEach(c =>
-        c.classList.remove("active")
+function filterLocation(location) {
+    if (location === 'all') {
+        displayColleges(allColleges);
+        return;
+    }
+
+    const filtered = allColleges.filter(college =>
+        college.location.includes(location)
     );
-    element.classList.add("active");
 
-    const cards = document.querySelectorAll(".college-card");
-
-    cards.forEach(card => {
-        card.style.display =
-            location === "All" || card.dataset.location === location
-                ? "block"
-                : "none";
-    });
+    displayColleges(filtered);
 }
 </script>
 
