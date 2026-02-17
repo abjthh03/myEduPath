@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Edit Profile | myEduPath</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Glass Container */
+.profile-card {
+    width: 95%;
+    max-width: 850px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 40px;
+    color: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity:0; transform: translateY(20px); }
+    to { opacity:1; transform: translateY(0); }
+}
+
+.profile-card h2 {
+    margin-top: 0;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+/* Avatar */
+.avatar-section {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.avatar-circle {
+    width: 90px;
+    height: 90px;
+    background: #00c6ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    opacity: 0.8;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.form-group textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Skills tags preview */
+.skill-preview {
+    margin-top: 10px;
+}
+
+.skill-preview span {
+    background: #00c6ff;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+}
+
+.btn-save {
+    background: #00c6ff;
+    color: white;
+}
+
+.btn-back {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+.btn-save:hover {
+    opacity: 0.85;
+}
+
+.btn-back:hover {
+    background: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+<body>
+
+<div class="profile-card">
+
+    <h2>✨ Edit Your Professional Profile</h2>
+
+    <div class="avatar-section">
+        <div class="avatar-circle">
+            {{ user.name[0]|upper }}
+        </div>
+    </div>
+
+    <form method="POST">
+
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" name="name" value="{{ user.name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label>Professional Headline</label>
+            <input type="text" name="headline" 
+                   value="{{ user.headline or '' }}"
+                   placeholder="Ex: Aspiring Software Developer | AI Enthusiast">
+        </div>
+
+        <div class="form-group">
+            <label>About You</label>
+            <textarea name="bio" placeholder="Write a short professional bio...">{{ user.bio or '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Skills (comma separated)</label>
+            <input type="text" id="skillsInput" name="skills"
+                   value="{{ user.skills or '' }}"
+                   placeholder="Python, Flask, MySQL, UI Design">
+            <div class="skill-preview" id="skillPreview"></div>
+        </div>
+
+        <div class="btn-group">
+            <a href="/dashboard" class="btn btn-back">← Back</a>
+            <button type="submit" class="btn btn-save">Save Changes</button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+const input = document.getElementById("skillsInput");
+const preview = document.getElementById("skillPreview");
+
+function updateSkills(){
+    preview.innerHTML = "";
+    let skills = input.value.split(",");
+    skills.forEach(skill => {
+        if(skill.trim() !== ""){
+            let span = document.createElement("span");
+            span.textContent = skill.trim();
+            preview.appendChild(span);
+        }
+    });
+}
+
+input.addEventListener("input", updateSkills);
+updateSkills();
+</script>
+
+</body>
+</html>

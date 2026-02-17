@@ -370,6 +370,39 @@ def upload_resume():
 def download_resume(filename):
     return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
+
+#----------ACCOUNT EDIT-------
+
+@app.route("/account/edit", methods=["GET", "POST"])
+def edit_profile():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    if request.method == "POST":
+        name = request.form.get("name")
+        headline = request.form.get("headline")
+        bio = request.form.get("bio")
+        skills = request.form.get("skills")
+
+        cursor.execute("""
+            UPDATE users 
+            SET name=%s, headline=%s, bio=%s, skills=%s
+            WHERE id=%s
+        """, (name, headline, bio, skills, session["user_id"]))
+
+        conn.commit()
+        return redirect("/dashboard")
+
+    cursor.execute("SELECT * FROM users WHERE id=%s", (session["user_id"],))
+    user = cursor.fetchone()
+    conn.close()
+
+    return render_template("edit-profile.html", user=user)
+
+
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
