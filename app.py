@@ -98,7 +98,7 @@ def login():
             if user["role"] == "admin":
                 return redirect("/admin-dashboard")
 
-            return redirect("/dashboard")
+            return redirect("/")
 
         return "Invalid email or password"
 
@@ -308,3 +308,21 @@ def dashboard():
         return redirect(url_for("login"))
 
     return render_template("dashboard.html")
+
+
+#---------user account--------
+
+@app.route("/account")
+def account():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM users WHERE id=%s", (session["user_id"],))
+    user = cursor.fetchone()
+
+    conn.close()
+
+    return render_template("account.html", user=user)

@@ -43,7 +43,9 @@
 
         <div class="nav-actions">
             {% if session.get('user_id') %}
-                <a href="/logout" class="btn-primary small">Logout</a>
+    <a href="/account" class="btn-outline small">Account</a>
+    <a href="/logout" class="btn-primary small">Logout</a>
+
             {% else %}
                 <a href="/login" class="btn-primary small">Login</a>
                 <a href="/signup" class="btn-outline small">Sign Up</a>
