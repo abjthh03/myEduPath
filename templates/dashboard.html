@@ -16,14 +16,14 @@
 </header>
 
 <section class="home-section">
-    <h2>Welcome to Your Dashboard</h2>
-    <p>Manage your profile and track applications.</p>
+    <h2>Welcome, {{ user.name }}</h2>
+<p>Email: {{ user.email }}</p>
 
-    <div class="dashboard-cards">
-        <div class="feature">
-            <h3>👤 Profile</h3>
-            <p>Edit your personal details</p>
-        </div>
+<div class="dashboard-actions">
+    <a href="/jobs" class="btn-primary">Browse Jobs</a>
+    <a href="/account/edit" class="btn-outline">Edit Profile</a>
+</div>
+
 
         <div class="feature">
             <h3>📄 Resume</h3>

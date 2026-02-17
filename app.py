@@ -325,4 +325,4 @@ def account():
 
     conn.close()
 
-    return render_template("account.html", user=user)
+    return render_template("dashboard.html", user=user)
