@@ -403,6 +403,22 @@ def edit_profile():
     return render_template("edit-profile.html", user=user)
 
 
+#----course bug fix-----
+
+@app.route("/course/<int:course_id>")
+def course_details(course_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM courses WHERE id = %s", (course_id,))
+    course = cursor.fetchone()
+    conn.close()
+
+    if not course:
+        return "Course not found", 404
+
+    return render_template("course-details.html", course=course)
+
+
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))

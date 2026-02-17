@@ -53,6 +53,7 @@ fetch("/api/courses")
     });
 
 // DISPLAY COURSES
+
 function displayCourses(courses) {
     const container = document.getElementById("courseContainer");
     container.innerHTML = "";
@@ -69,8 +70,10 @@ function displayCourses(courses) {
                 <p>${course.description}</p>
                 <p><b>Duration:</b> ${course.duration}</p>
 
-                <a href="#" class="btn small-btn">
-                    View Details
+               <a href="/course/${course.id}" class="btn small-btn">
+    View Details
+</a>
+
                 </a>
             </div>
         `;
