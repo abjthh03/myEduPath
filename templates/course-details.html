@@ -13,17 +13,17 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 80px auto;
             background: white;
-            padding: 40px;
+            padding: 50px;
             border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
         }
 
-        .title {
-            font-size: 34px;
+        h1 {
             margin-bottom: 10px;
+            font-size: 36px;
         }
 
         .badge {
@@ -33,19 +33,32 @@
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
 
-        .box {
+        .section {
             background: #f4f6f8;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 25px;
         }
 
-        .box strong {
+        .section h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .college-card {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .college-card strong {
             display: block;
-            margin-bottom: 8px;
+            font-size: 16px;
         }
 
         .btn {
@@ -66,46 +79,76 @@
             border: 2px solid #2ecc71;
             color: #2ecc71;
         }
+
+        .empty {
+            color: #777;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
 
-    <h2 class="title">{{ course.course_name }}</h2>
+    {% if course %}
+        <h1>{{ course.course_name }}</h1>
 
-    {% if course.category %}
-        <span class="badge">{{ course.category }}</span>
+        {% if course.category %}
+            <span class="badge">{{ course.category }}</span>
+        {% endif %}
+
+        <div class="section">
+            <h3>Description</h3>
+            <p>{{ course.description or "No description available." }}</p>
+        </div>
+
+        <div class="section">
+            <h3>Duration</h3>
+            <p>{{ course.duration }}</p>
+        </div>
+
+        {% if course.eligibility %}
+        <div class="section">
+            <h3>Eligibility</h3>
+            <p>{{ course.eligibility }}</p>
+        </div>
+        {% endif %}
+
+        {% if course.career_scope %}
+        <div class="section">
+            <h3>Career Scope</h3>
+            <p>{{ course.career_scope }}</p>
+        </div>
+        {% endif %}
+
+        <!-- 🔥 COLLEGES SECTION -->
+        <div class="section">
+            <h3>Colleges Offering This Course</h3>
+
+            {% if colleges %}
+                {% for college in colleges %}
+                    <div class="college-card">
+                        <strong>{{ college.college_name }}</strong>
+                        <span>{{ college.location }}</span>
+                        {% if college.university %}
+                            <div style="font-size:13px;color:#555;">
+                                {{ college.university }}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="empty">No colleges linked to this course yet.</p>
+            {% endif %}
+        </div>
+
+        <div style="margin-top:30px;">
+            <a href="/courses" class="btn btn-outline">← Back to Courses</a>
+            <a href="/jobs" class="btn btn-primary">Explore Jobs</a>
+        </div>
+
+    {% else %}
+        <h2>Course not found</h2>
     {% endif %}
-
-    <div class="box">
-        <strong>Description</strong>
-        {{ course.description or "No description available." }}
-    </div>
-
-    <div class="box">
-        <strong>Duration</strong>
-        {{ course.duration }}
-    </div>
-
-    {% if course.eligibility %}
-    <div class="box">
-        <strong>Eligibility</strong>
-        {{ course.eligibility }}
-    </div>
-    {% endif %}
-
-    {% if course.career_scope %}
-    <div class="box">
-        <strong>Career Scope</strong>
-        {{ course.career_scope }}
-    </div>
-    {% endif %}
-
-    <div style="margin-top:30px;">
-        <a href="/courses" class="btn btn-outline">← Back to Courses</a>
-        <a href="/jobs" class="btn btn-primary">Explore Jobs</a>
-    </div>
 
 </div>
 

@@ -409,14 +409,23 @@ def edit_profile():
 def course_details(course_id):
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
+
+    # Get course
     cursor.execute("SELECT * FROM courses WHERE id = %s", (course_id,))
     course = cursor.fetchone()
+
+    # Get colleges offering this course
+    cursor.execute("""
+        SELECT c.*
+        FROM colleges c
+        JOIN college_courses cc ON c.id = cc.college_id
+        WHERE cc.course_id = %s
+    """, (course_id,))
+    colleges = cursor.fetchall()
+
     conn.close()
 
-    if not course:
-        return "Course not found", 404
-
-    return render_template("course-details.html", course=course)
+    return render_template("course-details.html", course=course, colleges=colleges)
 
 @app.route("/api/course/<int:course_id>")
 def api_single_course(course_id):
