@@ -1,9 +1,21 @@
 from flask import Flask, request, redirect, session, render_template, send_from_directory, jsonify
 from config import get_db_connection
+from werkzeug.utils import secure_filename
+
 import os
 
 app = Flask(__name__, template_folder="templates", static_folder="static")
 app.secret_key = "myedupath_secret_key"
+
+app = Flask(__name__, template_folder="templates", static_folder="static")
+app.secret_key = "myedupath_secret_key"
+
+# -------- Resume Upload Config --------
+UPLOAD_FOLDER = "uploads"
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
+
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
 
 
 # ---------------- HOME ----------------
@@ -330,6 +342,33 @@ def account():
 
     return render_template("account.html", user=user)
 
+
+@app.route("/upload-resume", methods=["POST"])
+def upload_resume():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    file = request.files.get("resume")
+
+    if file and file.filename != "":
+        filename = secure_filename(file.filename)
+        file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
+        file.save(file_path)
+
+        conn = get_db_connection()
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE users SET resume=%s WHERE id=%s",
+            (filename, session["user_id"])
+        )
+        conn.commit()
+        conn.close()
+
+    return redirect("/account")
+
+@app.route("/resume/<filename>")
+def download_resume(filename):
+    return send_from_directory(app.config["UPLOAD_FOLDER"], filename)
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":
