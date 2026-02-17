@@ -300,18 +300,22 @@ if __name__ == "__main__":
 
 #------------user dashboard------------
 
-from flask import session, redirect, url_for, render_template
-
-@app.route("/dashboard")
+f@app.route("/dashboard")
 def dashboard():
     if "user_id" not in session:
-        return redirect(url_for("login"))
+        return redirect("/login")
 
-    return render_template("dashboard.html")
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM users WHERE id=%s", (session["user_id"],))
+    user = cursor.fetchone()
+    conn.close()
+
+    return render_template("dashboard.html", user=user)
+
 
 
 #---------user account--------
-
 @app.route("/account")
 def account():
     if "user_id" not in session:
@@ -319,10 +323,9 @@ def account():
 
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-
     cursor.execute("SELECT * FROM users WHERE id=%s", (session["user_id"],))
     user = cursor.fetchone()
-
     conn.close()
 
-    return render_template("dashboard.html", user=user)
+    return render_template("account.html", user=user)
+
