@@ -2,76 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Course Details | myEduPath</title>
+    <title>{{ course.course_name }} | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 80px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .title {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #2ecc71;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .box {
+            background: #f4f6f8;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .box strong {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .btn {
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid #2ecc71;
+            color: #2ecc71;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <h1>myEduPath</h1>
-    <nav>
-        <a href="/">Home</a>
-      <a href="/courses">Courses</a>
-<a href="/colleges">Colleges</a>
-<a href="/jobs">Jobs</a>
-<a href="/contact">Contact</a>
+<div class="container">
 
-    </nav>
-</header>
+    <h2 class="title">{{ course.course_name }}</h2>
 
-<section class="home-section">
-    <div id="courseDetails">
-        <p>Loading course details...</p>
+    {% if course.category %}
+        <span class="badge">{{ course.category }}</span>
+    {% endif %}
+
+    <div class="box">
+        <strong>Description</strong>
+        {{ course.description or "No description available." }}
     </div>
-</section>
 
-<footer>
-    <p>© 2026 myEduPath | BCA Final Year Project</p>
-</footer>
+    <div class="box">
+        <strong>Duration</strong>
+        {{ course.duration }}
+    </div>
 
-<script>
-/* ✅ GET COURSE ID FROM URL */
-const params = new URLSearchParams(window.location.search);
-const courseId = params.get("id");
+    {% if course.eligibility %}
+    <div class="box">
+        <strong>Eligibility</strong>
+        {{ course.eligibility }}
+    </div>
+    {% endif %}
 
-console.log("Course ID:", courseId);
+    {% if course.career_scope %}
+    <div class="box">
+        <strong>Career Scope</strong>
+        {{ course.career_scope }}
+    </div>
+    {% endif %}
 
-/* ❌ If no ID */
-if (!courseId) {
-    document.getElementById("courseDetails").innerHTML =
-        "<p>Invalid course ID ❌</p>";
-}
+    <div style="margin-top:30px;">
+        <a href="/courses" class="btn btn-outline">← Back to Courses</a>
+        <a href="/jobs" class="btn btn-primary">Explore Jobs</a>
+    </div>
 
-/* ✅ FETCH SINGLE COURSE */
-fetch(`/api/course/${courseId}`)
-
-    .then(res => {
-        if (!res.ok) {
-            throw new Error("Course not found");
-        }
-        return res.json();
-    })
-    .then(course => {
-        document.getElementById("courseDetails").innerHTML = `
-            <div class="course-card">
-                <h2>${course.course_name}</h2>
-                <p><b>Category:</b> ${course.category}</p>
-                <p><b>Duration:</b> ${course.duration}</p>
-                <p><b>Eligibility:</b> ${course.eligibility}</p>
-                <p><b>Career Scope:</b> ${course.career_scope}</p>
-
-                <a href="courses.html" class="btn small-btn">← Back to Courses</a>
-            </div>
-        `;
-    })
-    .catch(err => {
-        console.error(err);
-        document.getElementById("courseDetails").innerHTML =
-            "<p>Failed to load course ❌</p>";
-    });
-</script>
+</div>
 
 </body>
 </html>

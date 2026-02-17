@@ -418,6 +418,20 @@ def course_details(course_id):
 
     return render_template("course-details.html", course=course)
 
+@app.route("/api/course/<int:course_id>")
+def api_single_course(course_id):
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+    cursor.execute("SELECT * FROM courses WHERE id=%s", (course_id,))
+    course = cursor.fetchone()
+    conn.close()
+
+    if course:
+        return jsonify(course)
+    else:
+        return jsonify({"error": "Course not found"}), 404
+
+
 
 # ---------------- RUN ----------------
 if __name__ == "__main__":

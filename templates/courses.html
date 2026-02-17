@@ -64,20 +64,19 @@ function displayCourses(courses) {
     }
 
     courses.forEach(course => {
-        container.innerHTML += `
-            <div class="course-card">
-                <h3>${course.course_name}</h3>
-                <p>${course.description}</p>
-                <p><b>Duration:</b> ${course.duration}</p>
+    container.innerHTML += `
+        <div class="course-card">
+            <h3>${course.course_name}</h3>
+            <p>${course.description || ""}</p>
+            <p><b>Duration:</b> ${course.duration}</p>
 
-               <a href="/course/${course.id}" class="btn small-btn">
-    View Details
-</a>
+            <a href="/course/${course.id}" class="btn small-btn">
+                View Details
+            </a>
+        </div>
+    `;
+});
 
-                </a>
-            </div>
-        `;
-    });
 }
 
 // SEARCH COURSES
