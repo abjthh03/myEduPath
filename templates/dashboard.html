@@ -1,36 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard | myEduPath</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<meta charset="UTF-8">
+<title>Dashboard | myEduPath</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f3f2ef;
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 280px 1fr 280px;
+    gap: 25px;
+}
+
+/* LEFT SIDEBAR */
+.profile-card {
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: #0a66c2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+
+.profile-card h3 {
+    margin: 15px 0 5px;
+}
+
+.profile-card p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.badge {
+    display: inline-block;
+    background: #e7f3ff;
+    color: #0a66c2;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* CENTER CONTENT */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.card h4 {
+    margin-top: 0;
+}
+
+/* RIGHT SIDEBAR */
+.quick-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.quick-card a {
+    display: block;
+    text-decoration: none;
+    color: #0a66c2;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.quick-card a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.btn-primary {
+    background: #0a66c2;
+    color: white;
+}
+
+.btn-outline {
+    border: 1px solid #0a66c2;
+    color: #0a66c2;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-outline:hover {
+    background: #f0f8ff;
+}
+
+@media(max-width: 900px){
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
 </head>
 <body>
 
+<div class="dashboard-container">
 
-<section class="home-section">
-    <h2>Welcome, {{ user.name }}</h2>
-<p>Email: {{ user.email }}</p>
-
-<div class="dashboard-actions">
-    <a href="/jobs" class="btn-primary">Browse Jobs</a>
-    <a href="/account/edit" class="btn-outline">Edit Profile</a>
-</div>
-
-
-       <a href="/account" style="text-decoration:none; color:inherit;">
-    <div class="card">
-        <h3>📄 Resume</h3>
-        <p>Upload or update your resume</p>
-    </div>
-</a>
-
-
-        <div class="feature">
-            <h3>📌 Applications</h3>
-            <p>Track your applied jobs</p>
+    <!-- LEFT -->
+    <div class="profile-card">
+        <div class="profile-avatar">
+            {{ user.name[0]|upper }}
         </div>
+        <h3>{{ user.name }}</h3>
+        <p>{{ user.email }}</p>
+        <span class="badge">{{ user.role|capitalize }}</span>
     </div>
-</section>
+
+    <!-- CENTER -->
+    <div class="main-content">
+
+        <div class="card">
+            <h4>📄 Resume</h4>
+            <p>Upload or manage your resume.</p>
+            <a href="/account" class="btn btn-primary">Manage Resume</a>
+        </div>
+
+        <div class="card">
+            <h4>📌 Applications</h4>
+            <p>Track the jobs you have applied for.</p>
+            <a href="/account" class="btn btn-outline">View Applications</a>
+        </div>
+
+        <div class="card">
+            <h4>🔥 Recommended Jobs</h4>
+            <p>Jobs based on your profile will appear here.</p>
+            <a href="/jobs" class="btn btn-primary">Browse Jobs</a>
+        </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="quick-card">
+        <h4>Quick Actions</h4>
+        <a href="/courses">Explore Courses</a>
+        <a href="/jobs">Find Jobs</a>
+        <a href="/account">Edit Profile</a>
+        <a href="/logout" style="color:#d93025;">Logout</a>
+    </div>
+
+</div>
 
 </body>
 </html>
