@@ -13,10 +13,10 @@
     <h1>myEduPath</h1>
     <nav>
         <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
+      <a href="/courses">Courses</a>
+<a href="/colleges">Colleges</a>
+<a href="/jobs">Jobs</a>
+<a href="/contact">Contact</a>
 
     </nav>
 </header>
@@ -45,7 +45,8 @@ if (!courseId) {
 }
 
 /* ✅ FETCH SINGLE COURSE */
-fetch(`http://127.0.0.1:5000/api/course/${courseId}`)
+fetch(`/api/course/${courseId}`)
+
     .then(res => {
         if (!res.ok) {
             throw new Error("Course not found");
