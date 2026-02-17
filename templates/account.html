@@ -73,6 +73,7 @@
             margin-top: 30px;
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -99,6 +100,14 @@
         .btn-danger {
             background: #e74c3c;
             color: white;
+        }
+
+        h3 {
+            margin-top: 40px;
+        }
+
+        input[type="file"] {
+            padding: 10px;
         }
     </style>
 </head>
@@ -130,6 +139,27 @@
         <div class="detail-box">
             <strong>Account Type:</strong> {{ user.role }}
         </div>
+    </div>
+
+    <!-- Resume Section -->
+    <hr style="margin:40px 0;">
+
+    <h3>📄 Resume</h3>
+
+    <div class="detail-box">
+        <form action="/upload-resume" method="POST" enctype="multipart/form-data">
+            <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+            <br><br>
+            <button type="submit" class="btn btn-primary">Upload Resume</button>
+        </form>
+
+        {% if user.resume %}
+            <br><br>
+            <p><strong>Uploaded Resume:</strong></p>
+            <a href="/static/uploads/{{ user.resume }}" target="_blank" class="btn btn-outline">
+                View Resume
+            </a>
+        {% endif %}
     </div>
 
     <div class="btn-group">
