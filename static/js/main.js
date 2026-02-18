@@ -192,9 +192,15 @@ document.addEventListener("DOMContentLoaded", function () {
         addMessage("You", message);
         chatInput.value = "";
 
-        setTimeout(() => {
-            addMessage("Bot", getBotResponse(message));
-        }, 500);
+        const reply = getBotResponse(message);
+
+    showTyping();
+
+    setTimeout(() => {
+    removeTyping();
+    addMessage("Bot", reply);
+  }, 1200);
+
     }
 
     function addMessage(sender, text) {
@@ -222,3 +228,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
+
+function showTyping() {
+    const typingDiv = document.createElement("div");
+    typingDiv.id = "typingIndicator";
+    typingDiv.className = "typing";
+    typingDiv.innerHTML = `
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    `;
+    chatMessages.appendChild(typingDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function removeTyping() {
+    const typing = document.getElementById("typingIndicator");
+    if (typing) typing.remove();
+}
+
