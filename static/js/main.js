@@ -164,24 +164,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//========chatbot=======
+
+// ===== CHATBOT =====
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    const toggle = document.getElementById("chatToggle");
+    const chatToggle = document.getElementById("chatToggle");
     const chatBox = document.getElementById("chatBox");
-    const sendBtn = document.getElementById("sendBtn");
     const chatInput = document.getElementById("chatInput");
     const chatMessages = document.getElementById("chatMessages");
 
-    if (!toggle) return;
-toggle.addEventListener("click", () => {
-    chatBox.classList.toggle("active");
-});
+    if (!chatToggle || !chatBox) return;
 
-    sendBtn.addEventListener("click", sendMessage);
-    chatInput.addEventListener("keypress", function(e) {
-        if (e.key === "Enter") sendMessage();
+    // Toggle chat
+    chatToggle.addEventListener("click", () => {
+        chatBox.classList.toggle("hidden");
+    });
+
+    // Send on Enter
+    chatInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+            sendMessage();
+        }
     });
 
     function sendMessage() {
@@ -191,58 +195,59 @@ toggle.addEventListener("click", () => {
         addMessage("You", message);
         chatInput.value = "";
 
-        const reply = getBotResponse(message);
+        showTyping();
 
-    showTyping();
-
-    setTimeout(() => {
-    removeTyping();
-    addMessage("Bot", reply);
-  }, 1200);
-
+        setTimeout(() => {
+            removeTyping();
+            const reply = getBotResponse(message);
+            addMessage("Bot", reply);
+        }, 1200);
     }
 
     function addMessage(sender, text) {
         const div = document.createElement("div");
-       div.className = sender === "You" ? "user-msg" : "bot-msg";
-       div.innerText = text;
-
+        div.className = sender === "You" ? "user-msg" : "bot-msg";
+        div.innerText = text;
         chatMessages.appendChild(div);
         chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+        const typingDiv = document.createElement("div");
+        typingDiv.className = "typing";
+        typingDiv.id = "typingIndicator";
+        typingDiv.innerHTML = `
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+        const typing = document.getElementById("typingIndicator");
+        if (typing) typing.remove();
     }
 
     function getBotResponse(msg) {
         msg = msg.toLowerCase();
 
-        if (msg.includes("it") || msg.includes("computer"))
-            return "You can explore BCA, BSc Computer Science, BTech CSE.";
-        if (msg.includes("medical"))
-            return "You can explore MBBS, BDS, Nursing, Pharmacy.";
-        if (msg.includes("commerce"))
-            return "You can explore BCom, BBA, CA.";
-        if (msg.includes("design"))
-            return "You can explore BDes, Animation, UI/UX.";
-        
-        return "Tell me your interest (IT, Medical, Commerce, Design) and I’ll suggest courses!";
+        if (msg.includes("bca")) {
+            return "BCA is a great IT course focusing on programming, software development and databases.";
+        }
+        if (msg.includes("btech")) {
+            return "BTech is an engineering degree. Popular branches include CSE, Mechanical, Civil.";
+        }
+        if (msg.includes("mbbs")) {
+            return "MBBS is a medical degree to become a doctor.";
+        }
+        if (msg.includes("design")) {
+            return "You can explore BDes, UI/UX Design or Graphic Design courses.";
+        }
+
+        return "Tell me your interest (IT, Medical, Commerce, Design) and I will guide you 😊";
     }
 
 });
-
-function showTyping() {
-    const typingDiv = document.createElement("div");
-    typingDiv.id = "typingIndicator";
-    typingDiv.className = "typing";
-    typingDiv.innerHTML = `
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
-    `;
-    chatMessages.appendChild(typingDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
-
-function removeTyping() {
-    const typing = document.getElementById("typingIndicator");
-    if (typing) typing.remove();
-}
 

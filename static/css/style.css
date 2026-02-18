@@ -1339,6 +1339,11 @@ body.dark .logo-main {
     display: flex;
 }
 
+.hidden {
+    display: none;
+}
+
+
 .chat-header {
     background: #1db954;
     color: white;
