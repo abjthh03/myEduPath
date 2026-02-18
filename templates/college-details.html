@@ -4,67 +4,63 @@
     <meta charset="UTF-8">
     <title>College Details | myEduPath</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
 <header>
     <h1>myEduPath</h1>
     <nav>
-          <a href="/">Home</a>
-        <a href="courses">Courses</a>
-        <a href="colleges">Colleges</a>
-        <a href="jobs" class="active">Jobs</a>
-        <a href="contact">Contact</a>
-
+        <a href="/">Home</a>
+        <a href="/courses">Courses</a>
+        <a href="/colleges" class="active">Colleges</a>
+        <a href="/jobs">Jobs</a>
+        <a href="/contact">Contact</a>
     </nav>
 </header>
 
 <section class="home-section">
-    <div id="collegeDetails">
-        <p>Loading college details...</p>
+    <div class="college-card">
+
+        <h2>{{ college.college_name }}</h2>
+
+        <p>📍 <b>Location:</b> {{ college.location }}</p>
+
+        {% if college.university %}
+        <p>🎓 <b>University:</b> {{ college.university }}</p>
+        {% endif %}
+
+        {% if college.rating %}
+        <p>⭐ <b>Rating:</b> {{ college.rating }}</p>
+        {% endif %}
+
+        <hr style="margin:20px 0;">
+
+        <h3>📚 Courses Offered</h3>
+
+        {% if courses %}
+            <ul class="course-list">
+                {% for course in courses %}
+                    <li>
+                        <a href="/course/{{ course.id }}">
+                            {{ course.course_name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No courses linked yet.</p>
+        {% endif %}
+
+        <br>
+        <a href="/colleges" class="btn small-btn">← Back to Colleges</a>
+
     </div>
 </section>
 
 <footer>
     <p>© 2026 myEduPath | BCA Final Year Project</p>
 </footer>
-
-<script>
-const collegeId = window.location.pathname.split("/").pop();
-
-
-console.log("College ID:", collegeId);
-
-if (!collegeId) {
-    document.getElementById("collegeDetails").innerHTML =
-        "<p>Invalid college ID ❌</p>";
-}
-
-fetch(`/api/college/${collegeId}`)
-
-    .then(res => {
-        if (!res.ok) throw new Error("College not found");
-        return res.json();
-    })
-    .then(college => {
-        document.getElementById("collegeDetails").innerHTML = `
-            <div class="college-card">
-                <h2>${college.college_name}</h2>
-                <p>📍 <b>Location:</b> ${college.location}</p>
-                <p>⭐ <b>Rating:</b> ${college.rating}</p>
-                <p><b>Courses Offered:</b> ${college.courses_offered}</p>
-
-                <a href="/colleges" class="btn small-btn">← Back to Colleges</a>
-            </div>
-        `;
-    })
-    .catch(() => {
-        document.getElementById("collegeDetails").innerHTML =
-            "<p>Failed to load college ❌</p>";
-    });
-</script>
 
 </body>
 </html>
