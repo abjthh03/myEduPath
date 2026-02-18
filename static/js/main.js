@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Toggle chat
     chatToggle.addEventListener("click", () => {
-        chatBox.classList.toggle("hidden");
-    });
+    chatBox.classList.toggle("active");
+});
 
     // Send on Enter
     chatInput.addEventListener("keypress", function (e) {
