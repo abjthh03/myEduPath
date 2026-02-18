@@ -41,7 +41,20 @@
 let allCourses = [];
 
 // FETCH COURSES FROM API
-fetch("/api/courses")
+
+const urlParams = new URLSearchParams(window.location.search);
+const selectedCategory = urlParams.get("category");
+
+let apiUrl = "/api/courses";
+
+if (selectedCategory) {
+    apiUrl += "?category=" + encodeURIComponent(selectedCategory);
+
+    document.querySelector(".section-title").innerText =
+        selectedCategory + " Courses";
+}
+
+fetch(apiUrl)
     .then(res => res.json())
     .then(data => {
         allCourses = data;
@@ -51,6 +64,7 @@ fetch("/api/courses")
         document.getElementById("courseContainer").innerHTML =
             "<p>Failed to load courses ❌</p>";
     });
+
 
 // DISPLAY COURSES
 

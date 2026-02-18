@@ -27,7 +27,20 @@ def home():
 # ---------------- FRONTEND PAGES ----------------
 @app.route('/courses')
 def courses():
-    return render_template('courses.html')
+    category = request.args.get("category")
+
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    if category:
+        cursor.execute("SELECT * FROM courses WHERE category = %s", (category,))
+    else:
+        cursor.execute("SELECT * FROM courses")
+
+    courses = cursor.fetchall()
+    conn.close()
+
+    return render_template("courses.html", courses=courses, selected_category=category)
 
 
 @app.route('/colleges')
@@ -261,13 +274,25 @@ def api_single_job(job_id):
 
 # ---------------- PUBLIC API ----------------
 @app.route("/api/courses")
-def api_courses():
+def get_courses():
+    category = request.args.get("category")
+
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM courses")
-    data = cursor.fetchall()
+
+    if category:
+        cursor.execute(
+            "SELECT * FROM courses WHERE category = %s",
+            (category,)
+        )
+    else:
+        cursor.execute("SELECT * FROM courses")
+
+    courses = cursor.fetchall()
     conn.close()
-    return jsonify(data)
+
+    return jsonify(courses)
+
 
 
 @app.route("/api/colleges")
