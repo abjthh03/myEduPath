@@ -442,28 +442,43 @@ def api_single_course(course_id):
     
     
     
+   # -------- COLLEGE DETAILS PAGE --------
    
-    
-# -------- COLLEGE DETAILS PAGE --------
-
 @app.route("/college/<int:college_id>")
 def college_details(college_id):
-    cursor = mysql.connection.cursor(dictionary=True)
 
-    cursor.execute("SELECT * FROM colleges WHERE id=%s", (college_id,))
+    conn = get_db_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    # Get college basic info
+    cursor.execute("SELECT * FROM colleges WHERE id = %s", (college_id,))
     college = cursor.fetchone()
 
+    if not college:
+        conn.close()
+        return "College not found", 404
+
+    # Get courses offered by this college
     cursor.execute("""
-        SELECT courses.id, courses.course_name
-        FROM courses
-        JOIN college_courses ON courses.id = college_courses.course_id
-        WHERE college_courses.college_id=%s
+        SELECT c.id, c.course_name
+        FROM courses c
+        JOIN college_courses cc ON c.id = cc.course_id
+        WHERE cc.college_id = %s
     """, (college_id,))
     courses = cursor.fetchall()
 
-    return render_template("college-details.html",
-                           college=college,
-                           courses=courses)
+    conn.close()
+
+    return render_template(
+        "college-details.html",
+        college=college,
+        courses=courses
+    )
+
+    
+
+
+
 
 
 # ---------------- RUN ----------------
