@@ -125,32 +125,34 @@
             <h3>Colleges Offering This Course</h3>
 
             {% if colleges %}
-                {% for college in colleges %}
-                    <div class="college-card">
-                        <strong>{{ college.college_name }}</strong>
-                        <span>{{ college.location }}</span>
-                        {% if college.university %}
-                            <div style="font-size:13px;color:#555;">
-                                {{ college.university }}
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            {% else %}
-                <p class="empty">No colleges linked to this course yet.</p>
+               {% for college in colleges %}
+    <div class="college-card enhanced">
+
+        <h4>{{ college.college_name }}</h4>
+
+        <p>📍 {{ college.location }}</p>
+
+        {% if college.university %}
+            <p>🎓 {{ college.university }}</p>
+        {% endif %}
+
+        <div class="college-stats">
+            {% if college.rating %}
+                ⭐ Rating: {{ college.rating }}
+            {% endif %}
+
+            {% if college.avg_package %}
+                💰 Avg Package: {{ college.avg_package }}
+            {% endif %}
+
+            {% if college.nirf_rank %}
+                🏆 NIRF Rank: {{ college.nirf_rank }}
+            {% endif %}
+
+            {% if college.placement_percentage %}
+                📊 Placement: {{ college.placement_percentage }}%
             {% endif %}
         </div>
 
-        <div style="margin-top:30px;">
-            <a href="/courses" class="btn btn-outline">← Back to Courses</a>
-            <a href="/jobs" class="btn btn-primary">Explore Jobs</a>
-        </div>
-
-    {% else %}
-        <h2>Course not found</h2>
-    {% endif %}
-
-</div>
-
-</body>
-</html>
+    </div>
+{% endfor %}
