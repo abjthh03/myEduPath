@@ -1,6 +1,18 @@
 /* =====================
    HOME HERO UPGRADE
 ===================== */
+body {
+    font-family: 'Inter', sans-serif;
+}
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+body {
+    background: #f8fafc;
+}
+
 
 .home-hero {
     max-width: 900px;
@@ -433,13 +445,24 @@ footer {
 
 /* Clean course card */
 .course-card {
-    background: #ffffff;
-    border-radius: 20px;
-    padding: 30px 25px;
-    text-align: center;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
 }
+
+.course-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.course-card h3 {
+    color: #16a34a;
+    margin-bottom: 10px;
+}
+
 
 ..course-card:hover {
     transform: translateY(-8px) scale(1.01);
@@ -501,6 +524,14 @@ footer {
 .course-card .btn:hover {
     transform: scale(1.05);
 }
+
+.courses-hero {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    padding: 100px 20px 60px;
+    text-align: center;
+    color: white;
+}
+
 
 .jobs-grid {
     display: grid;
@@ -937,9 +968,9 @@ body.dark .logo-main {
     SEARCH SECTION
 ================================ */
 
-.search-wrapper {
+ {
     position: relative;   /* added */
-    margin: 60px auto 80px;
+    .search-wrappermargin: 60px auto 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -949,15 +980,13 @@ body.dark .logo-main {
 
 
 .search-wrapper input {
-    flex: 1;
-    padding: 16px 22px;
+    width: 100%;
+    padding: 16px 20px;
     border-radius: 50px;
     border: none;
-    outline: none;
     font-size: 16px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
-
 .search-btn {
     padding: 14px 28px;
     border-radius: 50px;
@@ -965,14 +994,12 @@ body.dark .logo-main {
     background: #22c55e;
     color: white;
     font-weight: 600;
-    cursor: pointer;
     transition: 0.3s ease;
-    box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3);
 }
 
 .search-btn:hover {
-    transform: translateY(-3px);
     background: #16a34a;
+    transform: translateY(-2px);
 }
 .search-wrapper {
     position: relative;
