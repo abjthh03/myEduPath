@@ -963,69 +963,80 @@ body.dark .logo-main {
 }
 
 
-
 /* ===============================
     SEARCH SECTION
 ================================ */
 
- {
-    position: relative;   /* added */
-    .search-wrappermargin: 60px auto 80px;
+.search-wrapper {
+    position: relative;
+    margin: 60px auto 80px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
-    max-width: 700px;
+    gap: 15px;
+    max-width: 750px;
 }
 
-
 .search-wrapper input {
-    width: 100%;
-    padding: 16px 20px;
+    flex: 1;
+    padding: 16px 22px;
     border-radius: 50px;
     border: none;
     font-size: 16px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    outline: none;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    color: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
 }
+
+.search-wrapper input:focus {
+    box-shadow: 0 0 0 3px #1db954;
+    transform: scale(1.02);
+}
+
 .search-btn {
-    padding: 14px 28px;
+    padding: 14px 30px;
     border-radius: 50px;
     border: none;
-    background: #22c55e;
+    background: linear-gradient(135deg, #1db954, #16a34a);
     color: white;
     font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(29,185,84,0.4);
     transition: 0.3s ease;
 }
 
 .search-btn:hover {
-    background: #16a34a;
-    transform: translateY(-2px);
-}
-.search-wrapper {
-    position: relative;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(29,185,84,0.6);
 }
 
+/* Live dropdown */
 .live-results {
     position: absolute;
-    top: 60px;
+    top: 70px;
     width: 100%;
     background: #151515;
     border-radius: 12px;
     max-height: 300px;
     overflow-y: auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     z-index: 999;
 }
 
 .live-item {
-    padding: 12px 15px;
+    padding: 14px 18px;
     border-bottom: 1px solid #222;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 
 .live-item:hover {
     background: #1f1f1f;
 }
+
 
 
 /* =====================
