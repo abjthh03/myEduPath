@@ -194,9 +194,24 @@ function filterLocation(location) {
         return;
     }
 
-    const filtered = allColleges.filter(college =>
-        college.location.includes(location)
-    );
+   const filtered = allColleges.filter(college => {
+
+    if (location === "All") return true;
+
+    if (location === "Kerala") {
+        const keralaCities = [
+            "Ernakulam",
+            "Kozhikode",
+            "Thiruvananthapuram",
+            "Kannur",
+            "Thrissur"
+        ];
+        return keralaCities.includes(college.location);
+    }
+
+    return college.location.toLowerCase().includes(location.toLowerCase());
+});
+
 
     displayColleges(filtered);
 }

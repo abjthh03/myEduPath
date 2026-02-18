@@ -29,16 +29,19 @@ function filterColleges(location, element) {
     tabs.forEach(tab => tab.classList.remove("active"));
     element.classList.add("active");
 
-    cards.forEach(card => {
-        const cardLocation = card.dataset.location;
+   cards.forEach(card => {
+    const cardLocation = card.dataset.location;
 
-        if (location === "All" || cardLocation === location) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
+    if (
+        location === "All" ||
+        cardLocation.toLowerCase().includes(location.toLowerCase())
+    ) {
+        card.style.display = "block";
+    } else {
+        card.style.display = "none";
+    }
+});
+
 
 // =====================
 // Stats Counter Animation
