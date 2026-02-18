@@ -163,3 +163,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+//===== chatbot====
+
+#chatToggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1db954;
+    color: white;
+    font-size: 22px;
+    padding: 12px 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+#chatBox {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.chat-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+#chatMessages {
+    height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    font-size: 14px;
+}

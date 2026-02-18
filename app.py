@@ -501,8 +501,38 @@ def college_details(college_id):
     )
 
     
+#------------Chat bot------------
 
+@app.route("/api/career-bot", methods=["POST"])
+def career_bot():
+    data = request.get_json()
+    message = data.get("message", "").lower()
 
+    suggestions = []
+
+    if "math" in message or "coding" in message or "computer" in message:
+        suggestions = ["BCA", "BSc Computer Science", "BTech CSE"]
+
+    elif "medical" in message or "doctor" in message:
+        suggestions = ["MBBS", "BPharm", "BSc Nursing"]
+
+    elif "design" in message or "creative" in message:
+        suggestions = ["BDes", "BFA"]
+
+    elif "commerce" in message or "bank" in message:
+        suggestions = ["BCom", "BBA"]
+
+    elif "law" in message:
+        suggestions = ["LLB"]
+
+    else:
+        return jsonify({
+            "reply": "Tell me your interests (like coding, medical, design, commerce...)"
+        })
+
+    return jsonify({
+        "reply": "Based on your interest, you can explore: " + ", ".join(suggestions)
+    })
 
 
 
