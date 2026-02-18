@@ -175,10 +175,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatMessages = document.getElementById("chatMessages");
 
     if (!toggle) return;
-
-    toggle.addEventListener("click", () => {
-        chatBox.classList.toggle("hidden");
-    });
+toggle.addEventListener("click", () => {
+    chatBox.classList.toggle("active");
+});
 
     sendBtn.addEventListener("click", sendMessage);
     chatInput.addEventListener("keypress", function(e) {

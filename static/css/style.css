@@ -1321,6 +1321,7 @@ body.dark .logo-main {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
 }
 
+
 #chatBox {
     position: fixed;
     bottom: 80px;
@@ -1329,14 +1330,13 @@ body.dark .logo-main {
     background: #ffffff;
     border-radius: 15px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-    display: flex;
+    display: none;   /* IMPORTANT */
     flex-direction: column;
     overflow: hidden;
 }
 
-
-.hidden {
-    display: none;
+#chatBox.active {
+    display: flex;
 }
 
 .chat-header {
