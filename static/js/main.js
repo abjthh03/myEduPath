@@ -88,3 +88,52 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("searchInput");
+    const resultsBox = document.getElementById("liveResults");
+
+    if (!searchInput || !resultsBox) {
+        console.log("Search elements not found");
+        return;
+    }
+
+    let allData = [];
+
+    Promise.all([
+        fetch("/api/courses").then(res => res.json()),
+        fetch("/api/colleges").then(res => res.json()),
+        fetch("/api/jobs").then(res => res.json())
+    ]).then(([courses, colleges, jobs]) => {
+
+        allData = [
+            ...courses.map(c => ({ type: "Course", name: c.course_name, link: `/course/${c.id}` })),
+            ...colleges.map(c => ({ type: "College", name: c.college_name, link: `/college/${c.id}` })),
+            ...jobs.map(j => ({ type: "Job", name: j.title, link: `/job/${j.id}` }))
+        ];
+
+    }).catch(err => console.log("API fetch error:", err));
+
+    searchInput.addEventListener("input", function () {
+        const value = this.value.toLowerCase();
+        resultsBox.innerHTML = "";
+
+        if (!value) return;
+
+        const filtered = allData
+            .filter(item => item.name.toLowerCase().includes(value))
+            .slice(0, 6);
+
+        filtered.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "live-item";
+            div.innerHTML = `
+                <strong>${item.name}</strong>
+                <div style="font-size:12px;opacity:0.6;">${item.type}</div>
+            `;
+            div.onclick = () => window.location = item.link;
+            resultsBox.appendChild(div);
+        });
+    });
+
+});

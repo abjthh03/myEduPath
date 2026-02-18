@@ -938,6 +938,7 @@ body.dark .logo-main {
 ================================ */
 
 .search-wrapper {
+    position: relative;   /* added */
     margin: 60px auto 80px;
     display: flex;
     justify-content: center;
@@ -945,6 +946,7 @@ body.dark .logo-main {
     gap: 12px;
     max-width: 700px;
 }
+
 
 .search-wrapper input {
     flex: 1;
