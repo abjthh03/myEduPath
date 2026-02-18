@@ -298,12 +298,13 @@
 </section>
 
 
-    <!-- Search Box (UI Only) -->
+    <!-- Search Box  -->
     
     <div class="search-wrapper">
-    <input type="text" placeholder="Search courses, colleges or careers...">
-    <button class="search-btn">Search</button>
+    <input type="text" id="searchInput" placeholder="Search courses, colleges or careers...">
+
 </div>
+<div id="liveResults" class="live-results"></div>
 
 
     
@@ -396,6 +397,47 @@ document.querySelector(".load-more-btn").addEventListener("click", function() {
     });
 
     this.style.display = "none";
+});
+</script>
+
+<!-- search bar Script -->
+
+<script>
+const searchInput = document.getElementById("searchInput");
+const resultsBox = document.getElementById("liveResults");
+
+let allData = [];
+
+Promise.all([
+    fetch("/api/courses").then(res => res.json()),
+    fetch("/api/colleges").then(res => res.json()),
+    fetch("/api/jobs").then(res => res.json())
+]).then(([courses, colleges, jobs]) => {
+    allData = [
+        ...courses.map(c => ({ type: "Course", name: c.course_name, link: `/course/${c.id}` })),
+        ...colleges.map(c => ({ type: "College", name: c.college_name, link: `/college/${c.id}` })),
+        ...jobs.map(j => ({ type: "Job", name: j.title, link: `/job/${j.id}` }))
+    ];
+});
+
+searchInput.addEventListener("input", function () {
+    const value = this.value.toLowerCase();
+    resultsBox.innerHTML = "";
+
+    if (!value) return;
+
+    const filtered = allData
+        .filter(item => item.name.toLowerCase().includes(value))
+        .slice(0, 6);
+
+    filtered.forEach(item => {
+        resultsBox.innerHTML += `
+            <div class="live-item" onclick="window.location='${item.link}'">
+                <strong>${item.name}</strong>
+                <div style="font-size:12px;opacity:0.6;">${item.type}</div>
+            </div>
+        `;
+    });
 });
 </script>
 

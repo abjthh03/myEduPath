@@ -972,6 +972,32 @@ body.dark .logo-main {
     transform: translateY(-3px);
     background: #16a34a;
 }
+.search-wrapper {
+    position: relative;
+}
+
+.live-results {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    background: #151515;
+    border-radius: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    z-index: 999;
+}
+
+.live-item {
+    padding: 12px 15px;
+    border-bottom: 1px solid #222;
+    cursor: pointer;
+}
+
+.live-item:hover {
+    background: #1f1f1f;
+}
+
 
 /* =====================
    Career Modal
