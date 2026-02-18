@@ -29,18 +29,41 @@ function filterColleges(location, element) {
     tabs.forEach(tab => tab.classList.remove("active"));
     element.classList.add("active");
 
-   cards.forEach(card => {
-    const cardLocation = card.dataset.location;
+    cards.forEach(card => {
+        const cardLocation = card.dataset.location;
 
-    if (
-        location === "All" ||
-        cardLocation.toLowerCase().includes(location.toLowerCase())
-    ) {
-        card.style.display = "block";
-    } else {
-        card.style.display = "none";
-    }
-});
+        if (location === "All") {
+            card.style.display = "block";
+            return;
+        }
+
+        // Kerala = multiple cities
+        if (location === "Kerala") {
+            const keralaCities = [
+                "Ernakulam",
+                "Kozhikode",
+                "Thiruvananthapuram",
+                "Kannur",
+                "Thrissur"
+            ];
+
+            if (keralaCities.includes(cardLocation)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+
+            return;
+        }
+
+        // Bangalore / Mangalore
+        if (cardLocation.toLowerCase().includes(location.toLowerCase())) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
 
 // =====================
