@@ -117,57 +117,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // =====search=======
-
 document.addEventListener("DOMContentLoaded", function () {
 
     const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
     const liveResults = document.getElementById("liveResults");
 
-    if (!searchInput || !liveResults) {
+    if (!searchInput || !searchBtn || !liveResults) {
         console.log("Search elements not found");
         return;
     }
 
-    const items = [
-        "BCA",
-        "BSc Computer Science",
-        "BTech CSE",
-        "MBBS",
-        "BCom",
-        "BBA",
-        "Christ University",
-        "Loyola College",
-        "Amity University"
-    ];
+    searchBtn.addEventListener("click", function () {
+        const query = searchInput.value.trim();
 
-    searchInput.addEventListener("input", function () {
-        const value = this.value.toLowerCase();
-        liveResults.innerHTML = "";
-
-        if (value === "") {
-            liveResults.classList.add("hidden");
+        if (!query) {
+            liveResults.innerHTML = "<div class='live-item'>Enter something...</div>";
             return;
         }
 
-        const filtered = items.filter(item =>
-            item.toLowerCase().includes(value)
-        );
-
-        if (filtered.length === 0) {
-            liveResults.innerHTML = `<div class="live-item">No results found</div>`;
-        } else {
-            filtered.forEach(item => {
-                const div = document.createElement("div");
-                div.classList.add("live-item");
-                div.textContent = item;
-                liveResults.appendChild(div);
-            });
-        }
-
-        liveResults.classList.remove("hidden");
+        liveResults.innerHTML = `
+            <div class="live-item">Result for "${query}"</div>
+        `;
     });
 
 });
+
 
 
 
