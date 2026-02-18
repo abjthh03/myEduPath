@@ -127,20 +127,28 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Search elements not found");
         return;
     }
+    
 
     searchBtn.addEventListener("click", function () {
-        const query = searchInput.value.trim();
+    const query = searchInput.value.trim();
 
-        if (!query) {
-            liveResults.innerHTML = "<div class='live-item'>Enter something...</div>";
-            return;
-        }
+    if (!query) {
+        liveResults.innerHTML = `<div class="live-item">Enter something...</div>`;
+        return;
+    }
 
-        liveResults.innerHTML = `
-            <div class="live-item">Result for "${query}"</div>
-        `;
+    // Create result item properly
+    const item = document.createElement("div");
+    item.className = "live-item";
+    item.textContent = query.toUpperCase();
+
+    // 🔥 IMPORTANT PART — CLICK REDIRECT
+    item.addEventListener("click", function () {
+        window.location.href = `/courses?search=${encodeURIComponent(query)}`;
     });
 
+    liveResults.innerHTML = "";
+    liveResults.appendChild(item);
 });
 
 

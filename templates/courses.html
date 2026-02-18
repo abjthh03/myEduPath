@@ -102,6 +102,31 @@ function searchCourses() {
     displayCourses(filtered);
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const searchQuery = params.get("search");
+
+    if (searchQuery) {
+        const input = document.querySelector("#searchInput");
+        if (input) input.value = searchQuery;
+
+        // Wait until courses are loaded
+        const waitForCourses = setInterval(() => {
+            if (allCourses.length > 0) {
+                clearInterval(waitForCourses);
+
+                const filtered = allCourses.filter(course =>
+                    course.course_name.toLowerCase().includes(searchQuery.toLowerCase())
+                );
+
+                displayCourses(filtered);
+            }
+        }, 100);
+    }
+});
+</script>
+
 
 </body>
 </html>

@@ -28,19 +28,37 @@ def home():
 @app.route('/courses')
 def courses():
     category = request.args.get("category")
+    search = request.args.get("search")
 
     conn = get_db_connection()
     cursor = conn.cursor(dictionary=True)
 
-    if category:
-        cursor.execute("SELECT * FROM courses WHERE category = %s", (category,))
+    if search:
+        cursor.execute(
+            "SELECT * FROM courses WHERE course_name LIKE %s",
+            ("%" + search + "%",)
+        )
+        selected_category = None
+
+    elif category:
+        cursor.execute(
+            "SELECT * FROM courses WHERE category = %s",
+            (category,)
+        )
+        selected_category = category
+
     else:
         cursor.execute("SELECT * FROM courses")
+        selected_category = None
 
     courses = cursor.fetchall()
     conn.close()
 
-    return render_template("courses.html", courses=courses, selected_category=category)
+    return render_template(
+        "courses.html",
+        courses=courses,
+        selected_category=selected_category
+    )
 
 
 @app.route('/colleges')
