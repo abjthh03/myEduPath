@@ -164,44 +164,59 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//===== chatbot====
+//========chatbot=======
 
-#chatToggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #1db954;
-    color: white;
-    font-size: 22px;
-    padding: 12px 16px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-}
+document.addEventListener("DOMContentLoaded", function () {
 
-#chatBox {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    width: 300px;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    padding: 10px;
-}
+    const toggle = document.getElementById("chatToggle");
+    const chatBox = document.getElementById("chatBox");
+    const sendBtn = document.getElementById("sendBtn");
+    const chatInput = document.getElementById("chatInput");
+    const chatMessages = document.getElementById("chatMessages");
 
-.hidden {
-    display: none;
-}
+    if (!toggle) return;
 
-.chat-header {
-    font-weight: bold;
-    margin-bottom: 8px;
-}
+    toggle.addEventListener("click", () => {
+        chatBox.classList.toggle("hidden");
+    });
 
-#chatMessages {
-    height: 200px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    font-size: 14px;
-}
+    sendBtn.addEventListener("click", sendMessage);
+    chatInput.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") sendMessage();
+    });
+
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (!message) return;
+
+        addMessage("You", message);
+        chatInput.value = "";
+
+        setTimeout(() => {
+            addMessage("Bot", getBotResponse(message));
+        }, 500);
+    }
+
+    function addMessage(sender, text) {
+        const div = document.createElement("div");
+        div.innerHTML = `<strong>${sender}:</strong> ${text}`;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function getBotResponse(msg) {
+        msg = msg.toLowerCase();
+
+        if (msg.includes("it") || msg.includes("computer"))
+            return "You can explore BCA, BSc Computer Science, BTech CSE.";
+        if (msg.includes("medical"))
+            return "You can explore MBBS, BDS, Nursing, Pharmacy.";
+        if (msg.includes("commerce"))
+            return "You can explore BCom, BBA, CA.";
+        if (msg.includes("design"))
+            return "You can explore BDes, Animation, UI/UX.";
+        
+        return "Tell me your interest (IT, Medical, Commerce, Design) and I’ll suggest courses!";
+    }
+
+});
