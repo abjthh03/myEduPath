@@ -114,55 +114,61 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+// =====search=======
+
 document.addEventListener("DOMContentLoaded", function () {
 
     const searchInput = document.getElementById("searchInput");
-    const resultsBox = document.getElementById("liveResults");
+    const liveResults = document.getElementById("liveResults");
 
-    if (!searchInput || !resultsBox) {
+    if (!searchInput || !liveResults) {
         console.log("Search elements not found");
         return;
     }
 
-    let allData = [];
-
-    Promise.all([
-        fetch("/api/courses").then(res => res.json()),
-        fetch("/api/colleges").then(res => res.json()),
-        fetch("/api/jobs").then(res => res.json())
-    ]).then(([courses, colleges, jobs]) => {
-
-        allData = [
-            ...courses.map(c => ({ type: "Course", name: c.course_name, link: `/course/${c.id}` })),
-            ...colleges.map(c => ({ type: "College", name: c.college_name, link: `/college/${c.id}` })),
-            ...jobs.map(j => ({ type: "Job", name: j.title, link: `/job/${j.id}` }))
-        ];
-
-    }).catch(err => console.log("API fetch error:", err));
+    const items = [
+        "BCA",
+        "BSc Computer Science",
+        "BTech CSE",
+        "MBBS",
+        "BCom",
+        "BBA",
+        "Christ University",
+        "Loyola College",
+        "Amity University"
+    ];
 
     searchInput.addEventListener("input", function () {
         const value = this.value.toLowerCase();
-        resultsBox.innerHTML = "";
+        liveResults.innerHTML = "";
 
-        if (!value) return;
+        if (value === "") {
+            liveResults.classList.add("hidden");
+            return;
+        }
 
-        const filtered = allData
-            .filter(item => item.name.toLowerCase().includes(value))
-            .slice(0, 6);
+        const filtered = items.filter(item =>
+            item.toLowerCase().includes(value)
+        );
 
-        filtered.forEach(item => {
-            const div = document.createElement("div");
-            div.className = "live-item";
-            div.innerHTML = `
-                <strong>${item.name}</strong>
-                <div style="font-size:12px;opacity:0.6;">${item.type}</div>
-            `;
-            div.onclick = () => window.location = item.link;
-            resultsBox.appendChild(div);
-        });
+        if (filtered.length === 0) {
+            liveResults.innerHTML = `<div class="live-item">No results found</div>`;
+        } else {
+            filtered.forEach(item => {
+                const div = document.createElement("div");
+                div.classList.add("live-item");
+                div.textContent = item;
+                liveResults.appendChild(div);
+            });
+        }
+
+        liveResults.classList.remove("hidden");
     });
 
 });
+
 
 
 // ===== CHATBOT =====
