@@ -33,14 +33,14 @@
         </nav>
 
         <div class="nav-actions">
-            {% if session.get('user_id') %}
-    <a href="/account" class="btn-outline small">Account</a>
-    <a href="/logout" class="btn-primary small">Logout</a>
+          {% if session.get('user_id') %}
+    <a href="/account" class="account-btn">Account</a>
+    <a href="/logout" class="logout-btn">Logout</a>
+{% else %}
+    <a href="/login" class="logout-btn">Login</a>
+    <a href="/signup" class="account-btn">Sign Up</a>
+{% endif %}
 
-            {% else %}
-                <a href="/login" class="btn-primary small">Login</a>
-                <a href="/signup" class="btn-outline small">Sign Up</a>
-            {% endif %}
 
            <div id="themeToggle" class="theme-toggle"></div>
 

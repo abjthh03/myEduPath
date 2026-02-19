@@ -745,75 +745,6 @@ footer {
 }
 
 /* ===============================
-       NAVBAR REDESIGN
-================================ */
-.navbar {
-  background: transparent;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-/* Center Links */
-.nav-links a {
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.7);
-    position: relative;
-    transition: 0.3s ease;
-    letter-spacing: 0.3px;
-}
-
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0;
-    height: 2px;
-    background: #22c55e;
-    border-radius: 2px;
-    transition: width 0.3s ease;
-}
-.nav-links a:hover {
-    color: #ffffff;
-    text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
-}
-
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-/* Right side actions */
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-
-/* Small button size */
-.small {
-    font-size: 14px;
-}
-
-/* Fix page overlap */
-body {
-    padding-top: 80px;
-}
-
-
-/* ===============================
            LOGO
 ================================ */
 
@@ -1097,119 +1028,6 @@ body.dark .logo-main {
 }
 
 
-
-/* =========================
-   GLOBAL NAVBAR (UNIFIED)
-========================= */
-.main-navbar {
-    width: 100%;
-    background: var(--header-bg);
-    padding: 18px 0;
-    font-family: 'Poppins', sans-serif;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: 0.3s ease;
-}
-
-
-.nav-container {
-    width: 85%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo a {
-    text-decoration: none;
-    font-size: 24px;
-    font-weight: 700;
-    color: white;
-}
-
-.logo span {
-    color: #22c55e;
-}
-
-.nav-links a {
-    margin-left: 30px;
-    text-decoration: none;
-    color: #cbd5e1;
-    font-weight: 500;
-    transition: 0.3s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-    color: #22c55e;
-}
-
-
-.jobs-hero {
-    text-align: center;
-    padding: 80px 20px 40px;
-}
-
-.jobs-hero h1 {
-    font-size: 42px;
-    margin-bottom: 10px;
-}
-
-.jobs-hero p {
-    opacity: 0.8;
-}
-
-.jobs-section {
-    padding: 40px 8%;
-}
-
-.jobs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.job-card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-}
-
-.job-card:hover {
-    transform: translateY(-6px);
-}
-
-.job-card h3 {
-    color: #22c55e;
-    margin-bottom: 12px;
-}
-
-.job-desc {
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-.apply-btn {
-    margin-top: 20px;
-    padding: 10px 22px;
-    background: #22c55e;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
-
-.apply-btn:hover {
-    background: #16a34a;
-    transform: scale(1.05);
-}
-
-
 /* =========================
       user dashboard
 ========================= */
@@ -1469,33 +1287,29 @@ body.dark .logo-main {
     background: #16a34a;
 }
 
-/* ===================================
-   FINAL PREMIUM NAVBAR OVERRIDE
-=================================== */
+/* ================================
+   NAVBAR 
+================================ */
 
-.navbar,
-.main-navbar {
+.navbar {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
 
-  background: rgba(15, 17, 21, 0.75);
-  backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 18px 0;
+  background: rgba(10, 12, 16, 0.75);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Prevent content jump */
 body {
-  padding-top: 90px;
+  padding-top: 95px;
 }
 
-/* Container */
 .nav-container {
-  max-width: 1200px;
+  max-width: 1300px;
   margin: auto;
-  padding: 0 40px;
+  padding: 18px 40px;
 
   display: flex;
   align-items: center;
@@ -1503,8 +1317,9 @@ body {
 }
 
 /* Logo */
+
 .logo-text {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.5px;
   text-decoration: none;
@@ -1515,81 +1330,87 @@ body {
   color: #22c55e;
 }
 
-/* Center nav links */
+/* Center navigation */
+
 .nav-links {
   display: flex;
-  gap: 35px;
+  gap: 40px;
 }
 
 .nav-links a {
-  text-decoration: none;
-  font-weight: 500;
   font-size: 15px;
+  font-weight: 500;
   color: rgba(255,255,255,0.7);
-  position: relative;
+  text-decoration: none;
   transition: 0.3s ease;
-}
-
-/* Hover underline animation */
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0;
-  height: 2px;
-  background: #22c55e;
-  transition: width 0.3s ease;
+  position: relative;
 }
 
 .nav-links a:hover {
   color: white;
 }
 
+/* Underline animation */
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
+
 .nav-links a:hover::after {
   width: 100%;
 }
 
-/* Right actions */
+/* Right side */
+
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
 }
 
 /* Account button */
+
 .account-btn {
-  padding: 8px 20px;
-  border-radius: 30px;
-  border: 1px solid #22c55e;
-  color: #22c55e;
+  padding: 8px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.2);
   background: transparent;
+  color: white;
   font-weight: 500;
   transition: 0.3s ease;
 }
 
 .account-btn:hover {
-  background: #22c55e;
-  color: white;
+  border-color: #22c55e;
+  color: #22c55e;
 }
 
 /* Logout button */
+
 .logout-btn {
-  padding: 8px 22px;
-  border-radius: 30px;
-  background: #22c55e;
-  color: white;
+  padding: 8px 24px;
+  border-radius: 999px;
   border: none;
-  font-weight: 500;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  font-weight: 600;
   transition: 0.3s ease;
 }
 
 .logout-btn:hover {
-  background: #16a34a;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34,197,94,0.4);
 }
 
-/* Toggle spacing fix */
+/* Toggle alignment */
+
 .theme-toggle {
-  margin-left: 10px;
+  margin-left: 6px;
 }
