@@ -1468,3 +1468,128 @@ body.dark .logo-main {
 .signup-btn:hover {
     background: #16a34a;
 }
+
+/* ===================================
+   FINAL PREMIUM NAVBAR OVERRIDE
+=================================== */
+
+.navbar,
+.main-navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  background: rgba(15, 17, 21, 0.75);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 18px 0;
+}
+
+/* Prevent content jump */
+body {
+  padding-top: 90px;
+}
+
+/* Container */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.logo-text {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  color: white;
+}
+
+.logo-text span {
+  color: #22c55e;
+}
+
+/* Center nav links */
+.nav-links {
+  display: flex;
+  gap: 35px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgba(255,255,255,0.7);
+  position: relative;
+  transition: 0.3s ease;
+}
+
+/* Hover underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #22c55e;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: white;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Right actions */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Account button */
+.account-btn {
+  padding: 8px 20px;
+  border-radius: 30px;
+  border: 1px solid #22c55e;
+  color: #22c55e;
+  background: transparent;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.account-btn:hover {
+  background: #22c55e;
+  color: white;
+}
+
+/* Logout button */
+.logout-btn {
+  padding: 8px 22px;
+  border-radius: 30px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background: #16a34a;
+  transform: translateY(-2px);
+}
+
+/* Toggle spacing fix */
+.theme-toggle {
+  margin-left: 10px;
+}
