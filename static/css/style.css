@@ -1,39 +1,42 @@
 /* ===== CLEAN HERO ===== */
-
 .hero-section {
-  background: linear-gradient(135deg, #0f172a, #065f46);
-  color: white;
-  padding: 140px 20px;
+  background: var(--bg-primary);
+  padding: var(--space-7) var(--space-3);
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .hero-container {
   max-width: 900px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
-
 .hero-section h1 {
   font-size: 56px;
-  font-weight: 700;
-  margin-bottom: 20px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .hero-section p {
   font-size: 18px;
-  opacity: 0.85;
-  margin-bottom: 40px;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .hero-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: var(--space-3);
 }
 
-.hero-buttons .btn {
-  padding: 14px 30px;
-  border-radius: 50px;
+.btn {
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
   font-weight: 600;
+  transition: var(--transition);
 }
 
 /* Buttons */
@@ -45,58 +48,55 @@
     z-index: 1;
 }
 
-.primary-btn {
-    background: #22c55e;
-    color: #fff;
-    padding: 16px 34px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s ease;
+.btn-primary {
+  background: var(--accent);
+  color: white;
 }
 
-.primary-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 35px rgba(34,197,94,0.4);
+.btn-primary:hover {
+  background: var(--accent-hover);
 }
 
-.secondary-btn {
-    background: transparent;
-    border: 2px solid #22c55e;
-    color: #22c55e;
-    padding: 16px 34px;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s ease;
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
 }
 
-.secondary-btn:hover {
-    background: #22c55e;
-    color: white;
+.btn-secondary:hover {
+  background: var(--accent);
+  color: white;
 }
+
 
 
 /* =====================
    CSS VARIABLES (THEMES)
 ===================== */
-
 :root {
-    --bg-color: #ecf5ee;
-    --card-bg: #ffffff;
-    --text-color: #0f172a;
-    --primary: #22c55e;
-    --secondary: #dcfce7;
-    --header-bg: #ffffff;
-    --shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
+  --bg-primary: #0f1115;
+  --bg-secondary: #161a22;
+  --surface: #1c212b;
 
-body.dark {
-    --bg-color: #1c1e21;
-    --card-bg: #021c27;
-    --text-color: #e5e7eb;
-    --primary: #22c55e;
-    --secondary: #076a3c;
-    --header-bg: #020617;
-    --shadow: 0 10px 25px rgba(0,0,0,0.6);
+  --text-primary: #f5f7fa;
+  --text-secondary: #9aa4b2;
+
+  --accent: #4f8cff;
+  --accent-hover: #3a74e8;
+
+  --border: rgba(255,255,255,0.06);
+
+  --radius: 12px;
+  --transition: 0.3s ease;
+/*spacing scale*/
+--space-1: 8px;
+--space-2: 16px;
+--space-3: 24px;
+--space-4: 32px;
+--space-5: 48px;
+--space-6: 72px;
+--space-7: 96px;
 }
 
 /* =====================
@@ -111,6 +111,11 @@ body {
     transition: all 0.4s ease;
 }
 
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
 
 /* =====================
    THEME TOGGLE SWITCH
@@ -149,20 +154,24 @@ body.dark .theme-toggle::before {
 /* =====================
    HERO
 ===================== */
-
 .hero {
-    padding: 90px 20px;
-    text-align: center;
+  padding: 120px 8% 100px;
+  background: var(--bg-primary);
 }
-
-.hero h2 {
-    font-size: 42px;
+.hero h1 {
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  color: var(--text-primary);
 }
 
 .hero p {
-    font-size: 18px;
-    opacity: 0.8;
+  margin-top: var(--space-2);
+  color: var(--text-secondary);
+  max-width: 600px;
 }
+
+
 
 .btn {
     display: inline-block;
@@ -399,9 +408,6 @@ footer {
     color: var(--primary);
 }
 
-/* =====================
-   STATS
-===================== */
 
 /* =====================
    Stats Animation
