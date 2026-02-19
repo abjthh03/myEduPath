@@ -1,62 +1,44 @@
 /* =====================
-   PREMIUM HERO SECTION
+   PREMIUM HOME HERO
 ===================== */
 
 .premium-hero {
     position: relative;
-    min-height: 90vh;
+    min-height: 92vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 140px 20px;
+    padding: 160px 20px;
     overflow: hidden;
 
-    background: linear-gradient(
-        135deg,
-        #0f172a,
-        #065f46
-    );
-    color: white;
+    background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
+    color: #ffffff;
 }
 
-/* Glow Orb */
-.premium-hero::before {
+/* Subtle gradient overlay */
+.premium-hero::after {
     content: "";
     position: absolute;
-    width: 650px;
-    height: 650px;
-    background: radial-gradient(circle, rgba(34,197,94,0.25), transparent 70%);
-    top: -250px;
-    right: -250px;
-    border-radius: 50%;
-    animation: floatGlow 8s ease-in-out infinite;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(34,197,94,0.15), transparent 50%);
     z-index: 0;
 }
 
-@keyframes floatGlow {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(20px); }
-    100% { transform: translateY(0px); }
-}
-
 .premium-hero h1 {
-    font-size: 56px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 60px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.2;
     position: relative;
     z-index: 1;
 }
 
-.premium-hero h1 span {
-    color: #22c55e;
-}
-
 .premium-hero p {
-    font-size: 18px;
+    font-size: 20px;
     max-width: 650px;
-    margin: 0 auto 40px;
-    opacity: 0.9;
+    margin: 0 auto 45px;
+    opacity: 0.85;
     position: relative;
     z-index: 1;
 }
@@ -64,16 +46,16 @@
 /* Buttons */
 .btn-group {
     display: flex;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
     position: relative;
     z-index: 1;
 }
 
 .primary-btn {
     background: #22c55e;
-    color: white;
-    padding: 14px 32px;
+    color: #fff;
+    padding: 16px 34px;
     border-radius: 50px;
     font-weight: 600;
     transition: 0.3s ease;
@@ -81,14 +63,14 @@
 
 .primary-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(34,197,94,0.4);
+    box-shadow: 0 15px 35px rgba(34,197,94,0.4);
 }
 
 .secondary-btn {
     background: transparent;
-    color: #22c55e;
     border: 2px solid #22c55e;
-    padding: 14px 32px;
+    color: #22c55e;
+    padding: 16px 34px;
     border-radius: 50px;
     font-weight: 600;
     transition: 0.3s ease;
