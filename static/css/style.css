@@ -77,12 +77,12 @@
 ===================== */
 :root {
   --bg-color: #0f1115;
-  --surface: #1c212b;
+  --surface: #1e293b;
 
-  --text-primary: #f5f7fa;
-  --text-secondary: #9aa4b2;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
 
-  --accent: #4f8cff;
+  --accent: #22d3ee;
   --accent-hover: #3a74e8;
 
   --border: rgba(255,255,255,0.06);
@@ -94,6 +94,14 @@
   --space-5: 48px;
   --space-6: 72px;
   --space-7: 96px;
+
+--primary: #14b8a6;
+--secondary: #94a3b8;
+--card-bg: rgba(255,255,255,0.05);
+--shadow: 0 15px 40px rgba(0,0,0,0.4);
+
+
+
 }
 
 
@@ -467,7 +475,7 @@ footer {
 }
 
 
-..course-card:hover {
+.course-card:hover {
     transform: translateY(-8px) scale(1.01);
     box-shadow: 0 30px 60px rgba(0,0,0,0.15);
 }
