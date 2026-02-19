@@ -2,7 +2,7 @@
    HOME HERO UPGRADE
 ===================== */
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 h1, h2, h3 {
     font-weight: 700;
@@ -19,27 +19,30 @@ body {
     margin: auto;
 }
 
-.home-hero {
-    position: relative;
-    text-align: center;
+.premium-hero {
+    background: linear-gradient(135deg, #0f172a, #064e3b);
     color: white;
-    padding: 140px 20px;
+    text-align: center;
+    padding: 150px 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-.home-hero::before {
+.premium-hero::before {
     content: "";
     position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.65),
-        rgba(0, 0, 0, 0.75)
-    );
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(34,197,94,0.25), transparent 70%);
+    top: -200px;
+    right: -200px;
+    border-radius: 50%;
     z-index: 0;
 }
 
-.home-hero h1,
-.home-hero p,
-.home-hero .btn {
+.premium-hero h1,
+.premium-hero p,
+.premium-hero .btn-group {
     position: relative;
     z-index: 1;
 }
@@ -57,12 +60,17 @@ body {
     opacity: 0.9;
 }
 
-.home-hero h1 {
-    animation: fadeUp 1s ease forwards;
+.premium-hero h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
-.home-hero p {
-    animation: fadeUp 1.4s ease forwards;
+.premium-hero p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 35px;
+    opacity: 0.9;
 }
 
 @keyframes fadeUp {
