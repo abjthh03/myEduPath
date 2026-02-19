@@ -21,13 +21,13 @@ body {
 }
 
 .premium-hero {
-    background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
-    color: white;
-    text-align: center;
-    padding: 170px 20px;
-    position: relative;
-    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        var(--bg-color),
+        var(--secondary)
+    );
 }
+
 
 /* Glow Orb */
 .premium-hero::before {
@@ -82,11 +82,9 @@ body {
     border-radius: 50px;
     transition: 0.3s ease;
 }
+color: var(--text-color);
+background: var(--card-bg);
 
-.secondary-btn:hover {
-    background: #22c55e;
-    color: white;
-}
 
 /* =====================
    CSS VARIABLES (THEMES)
@@ -1237,16 +1235,17 @@ body.dark .logo-main {
 /* =========================
    GLOBAL NAVBAR (UNIFIED)
 ========================= */
-
 .main-navbar {
     width: 100%;
-    background: linear-gradient(90deg, #0f172a, #111827);
+    background: var(--header-bg);
     padding: 18px 0;
     font-family: 'Poppins', sans-serif;
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: 0.3s ease;
 }
+
 
 .nav-container {
     width: 85%;
@@ -1589,15 +1588,14 @@ body.dark .logo-main {
     transform: translateY(-3px);
     box-shadow: 0 12px 25px rgba(220, 39, 67, 0.4);
 }
-
 .login-btn {
     background: transparent;
-    border: 1px solid #22c55e;
-    color: #22c55e;
+    border: 2px solid var(--primary);
+    color: var(--primary);
 }
 
 .signup-btn {
-    background: #22c55e;
+    background: var(--primary);
     color: white;
 }
 
