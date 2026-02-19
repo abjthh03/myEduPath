@@ -1309,7 +1309,7 @@ body {
 .nav-container {
   max-width: 1300px;
   margin: auto;
-  padding: 18px 40px;
+  padding: 18px 60px;
 
   display: flex;
   align-items: center;
@@ -1334,7 +1334,7 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 45px;
 }
 
 .nav-links a {
@@ -1408,6 +1408,43 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(34,197,94,0.4);
 }
+
+/* NAV BUTTON POLISH */
+
+.nav-actions .btn-primary,
+.nav-actions .btn-outline {
+  padding: 8px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+/* Logout / Primary */
+
+.nav-actions .btn-primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border: none;
+  color: rgb(246, 243, 243);
+}
+
+.nav-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(34,197,94,0.4);
+}
+
+/* Account / Outline */
+
+.nav-actions .btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  color: rgb(251, 246, 246);
+}
+
+.nav-actions .btn-outline:hover {
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
 
 /* Toggle alignment */
 
