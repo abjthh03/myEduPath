@@ -2,7 +2,6 @@
 /* =========================
    LEGEND HERO
 ========================= */
-
 .legend-hero {
   min-height: 100vh;
   display: flex;
@@ -11,19 +10,18 @@
   text-align: center;
   padding: var(--space-7) var(--space-3);
   background:
-    radial-gradient(circle at 20% 20%, rgba(79,140,255,0.15), transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(79,140,255,0.12), transparent 50%),
-    var(--bg-primary);
+    radial-gradient(circle at 20% 20%, rgba(79,140,255,0.2), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(79,140,255,0.15), transparent 50%),
+    #0f1115;
 }
 
 .legend-hero h1 {
-  font-size: 64px;
-  font-weight: 700;
-  letter-spacing: -1px;
-  max-width: 900px;
-  margin: 0 auto;
-  color: var(--text-primary);
+  font-size: 72px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  line-height: 1.05;
 }
+
 
 .legend-hero p {
   margin-top: var(--space-3);
@@ -78,8 +76,7 @@
    CSS VARIABLES (THEMES)
 ===================== */
 :root {
-  --bg-primary: #0f1115;
-  --bg-secondary: #161a22;
+  --bg-color: #0f1115;
   --surface: #1c212b;
 
   --text-primary: #f5f7fa;
@@ -90,29 +87,27 @@
 
   --border: rgba(255,255,255,0.06);
 
-  --radius: 12px;
-  --transition: 0.3s ease;
-/*spacing scale*/
---space-1: 8px;
---space-2: 16px;
---space-3: 24px;
---space-4: 32px;
---space-5: 48px;
---space-6: 72px;
---space-7: 96px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 72px;
+  --space-7: 96px;
 }
+
 
 /* =====================
    GLOBAL
 ===================== */
 
 body {
-    margin: 0;
-    font-family: "Segoe UI", sans-serif;
-    background: var(--bg-color);
-    color: var(--text-color);
-    transition: all 0.4s ease;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: var(--bg-color);
+  color: var(--text-primary);
 }
+
 
 .card-grid {
   display: grid;
@@ -418,14 +413,9 @@ footer {
     gap: 30px;
     margin-top: 40px;
 }
-
 .category-card {
-    background: white;
-    padding: 30px;
-    border-radius: 18px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-    transition: 0.3s ease;
-    text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
 }
 
 .category-card:hover {
@@ -437,12 +427,10 @@ footer {
     margin-bottom: 10px;
     color: #1db954;
 }
-
 .category-card p {
-    font-size: 14px;
-    margin-bottom: 15px;
-    color: #555;
+  color: var(--text-secondary);
 }
+
 
 
 /* =========================
@@ -496,13 +484,6 @@ footer {
     color: #444;
     font-size: 15px;
     margin: 6px 0;
-}
-
-/* Button */
-.course-card .btn {
-    margin-top: 18px;
-    padding: 10px 22px;
-    font-size: 14px;
 }
 
 /* Mobile view */
@@ -724,18 +705,6 @@ footer {
     to { transform: scale(1.12); }
 }
 
-.hero-overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        rgba(15,23,42,0.85),
-        rgba(0,0,0,0.6)
-    );
-    z-index: 2;
-}
-
 
 .hero-content {
     position: relative;
@@ -764,30 +733,11 @@ footer {
     gap: 20px;
 }
 
-.primary-btn {
-    background: #1db954;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
-
 .primary-btn:hover {
     background: #17a74a;
     transform: translateY(-3px);
 }
 
-.outline-btn {
-    border: 2px solid white;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s ease;
-}
 
 .outline-btn:hover {
     background: white;
@@ -851,35 +801,6 @@ footer {
     gap: 15px;
 }
 
-/* Buttons */
-.btn-primary {
-    background: var(--primary);
-    color: rgb(244, 251, 239);
-    padding: 8px 18px;
-    border-radius: 25px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-}
-
-.btn-outline {
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    padding: 6px 16px;
-    border-radius: 25px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s ease;
-}
-
-.btn-outline:hover {
-    background: var(--primary);
-    color: rgb(239, 249, 236);
-}
 
 /* Small button size */
 .small {
