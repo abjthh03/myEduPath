@@ -1,74 +1,77 @@
-/* ===== CLEAN HERO ===== */
-.hero-section {
-  background: var(--bg-primary);
-  padding: var(--space-7) var(--space-3);
-  text-align: center;
+
+/* =========================
+   LEGEND HERO
+========================= */
+
+.legend-hero {
+  min-height: 100vh;
   display: flex;
+  align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: var(--space-7) var(--space-3);
+  background:
+    radial-gradient(circle at 20% 20%, rgba(79,140,255,0.15), transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(79,140,255,0.12), transparent 50%),
+    var(--bg-primary);
 }
 
-.hero-container {
+.legend-hero h1 {
+  font-size: 64px;
+  font-weight: 700;
+  letter-spacing: -1px;
   max-width: 900px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-}
-.hero-section h1 {
-  font-size: 56px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
+  margin: 0 auto;
+  color: var(--text-primary);
 }
 
-.hero-section p {
-  font-size: 18px;
+.legend-hero p {
+  margin-top: var(--space-3);
+  font-size: 20px;
   color: var(--text-secondary);
   max-width: 600px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.hero-buttons {
+.hero-cta {
+  margin-top: var(--space-5);
   display: flex;
   justify-content: center;
   gap: var(--space-3);
 }
 
-.btn {
-  padding: var(--space-2) var(--space-4);
-  border-radius: 999px;
-  font-weight: 600;
-  transition: var(--transition);
-}
-
-/* Buttons */
-.btn-group {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    position: relative;
-    z-index: 1;
-}
+/* Clean Button System */
 
 .btn-primary {
   background: var(--accent);
   color: white;
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
+  transform: translateY(-3px);
 }
 
-
-.btn-secondary {
-  background: transparent;
+.btn-outline {
   border: 1px solid var(--accent);
   color: var(--accent);
+  padding: 14px 34px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
 }
 
-.btn-secondary:hover {
+.btn-outline:hover {
   background: var(--accent);
   color: white;
 }
-
 
 
 /* =====================
@@ -150,45 +153,6 @@ body.dark .theme-toggle::before {
     transform: translateX(21px);
 }
 
-
-/* =====================
-   HERO
-===================== */
-.hero {
-  padding: 120px 8% 100px;
-  background: var(--bg-primary);
-}
-.hero h1 {
-  font-size: 48px;
-  font-weight: 600;
-  letter-spacing: -0.5px;
-  color: var(--text-primary);
-}
-
-.hero p {
-  margin-top: var(--space-2);
-  color: var(--text-secondary);
-  max-width: 600px;
-}
-
-
-
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 26px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: bold;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s;
-}
-
-.btn:hover {
-    transform: scale(1.05);
-}
 
 /* =====================
    CARDS
@@ -740,14 +704,6 @@ footer {
    Hero Section Layout
 ===================== */
 
-.premium-hero {
-    position: relative;
-    height: 90vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
 
 .hero-bg {
     position: absolute;
@@ -841,17 +797,10 @@ footer {
 /* ===============================
        NAVBAR REDESIGN
 ================================ */
-
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    backdrop-filter: blur(16px);
-    background: rgba(15, 23, 42, 0.85);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    z-index: 1000;
-    padding: 16px 0;
-    transition: 0.3s ease;
+  background: transparent;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
 }
 
 .nav-container {
