@@ -1,46 +1,39 @@
-/* =====================
-   PREMIUM HOME HERO
-===================== */
+/* ===== CLEAN HERO ===== */
 
-.premium-hero {
-    position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 160px 20px;
-    overflow: hidden;
-
-    background: linear-gradient(135deg, #0f172a 0%, #064e3b 100%);
-    color: #ffffff;
+.hero-section {
+  background: linear-gradient(135deg, #0f172a, #065f46);
+  color: white;
+  padding: 140px 20px;
+  text-align: center;
 }
 
-/* Subtle gradient overlay */
-.premium-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 70% 30%, rgba(34,197,94,0.15), transparent 50%);
-    z-index: 0;
+.hero-container {
+  max-width: 900px;
+  margin: auto;
 }
 
-.premium-hero h1 {
-    font-size: 60px;
-    font-weight: 800;
-    margin-bottom: 24px;
-    line-height: 1.2;
-    position: relative;
-    z-index: 1;
+.hero-section h1 {
+  font-size: 56px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-.premium-hero p {
-    font-size: 20px;
-    max-width: 650px;
-    margin: 0 auto 45px;
-    opacity: 0.85;
-    position: relative;
-    z-index: 1;
+.hero-section p {
+  font-size: 18px;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero-buttons .btn {
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-weight: 600;
 }
 
 /* Buttons */
@@ -847,37 +840,33 @@ footer {
     position: fixed;
     top: 0;
     width: 100%;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(16px);
     background: rgba(15, 23, 42, 0.85);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     z-index: 1000;
-    padding: 18px 8%;
+    padding: 16px 0;
+    transition: 0.3s ease;
 }
-
 
 .nav-container {
     max-width: 1200px;
     margin: auto;
-    height: 80px;
     padding: 0 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* Center Links */
-.nav-links {
-    display: flex;
-    gap: 35px;
-}
 
+/* Center Links */
 .nav-links a {
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 15px;
-    color: var(--text-color);
+    color: rgba(255, 255, 255, 0.7);
     position: relative;
     transition: 0.3s ease;
+    letter-spacing: 0.3px;
 }
 
 .nav-links a::after {
@@ -887,8 +876,13 @@ footer {
     bottom: -6px;
     width: 0;
     height: 2px;
-    background: var(--primary);
+    background: #22c55e;
+    border-radius: 2px;
     transition: width 0.3s ease;
+}
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(34, 197, 94, 0.6);
 }
 
 .nav-links a:hover::after {
