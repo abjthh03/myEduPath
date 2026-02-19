@@ -1462,3 +1462,65 @@ body.dark .logo-main {
         transform: scale(1);
     }
 }
+
+
+/* ===============================
+   SOCIAL CONTACT SECTION
+================================ */
+
+.social-contact {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.social-contact h3 {
+    margin-bottom: 25px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.social-icons img {
+    width: 22px;
+    height: 22px;
+}
+
+/* WhatsApp */
+.whatsapp-btn {
+    background: #25D366;
+    color: white;
+}
+
+.whatsapp-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+}
+
+/* Instagram */
+.insta-btn {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+}
+
+.insta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(220, 39, 67, 0.4);
+}
