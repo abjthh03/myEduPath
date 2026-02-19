@@ -77,12 +77,12 @@
 ===================== */
 :root {
   --bg-color: #0f1115;
-  --surface: #1e293b;
+  --surface: #1c212b;
 
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
+  --text-primary: #f5f7fa;
+  --text-secondary: #9aa4b2;
 
-  --accent: #22d3ee;
+  --accent: #4f8cff;
   --accent-hover: #3a74e8;
 
   --border: rgba(255,255,255,0.06);
@@ -95,12 +95,10 @@
   --space-6: 72px;
   --space-7: 96px;
 
---primary: #14b8a6;
---secondary: #94a3b8;
+--primary: #22c55e;
+--secondary: #111827;
 --card-bg: rgba(255,255,255,0.05);
 --shadow: 0 15px 40px rgba(0,0,0,0.4);
-
-
 
 }
 
