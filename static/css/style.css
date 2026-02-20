@@ -1697,6 +1697,24 @@ body {
   margin-bottom: 12px;
 }
 
+
+.view-details-btn {
+    margin-top: 18px;
+    display: inline-block;
+    padding: 10px 22px;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* Hover animation */
+.view-details-btn:hover {
+    transform: translateY(-3px);
+    letter-spacing: 0.5px;
+}
+
+
 .course-list {
   list-style: none;
   padding: 0;
