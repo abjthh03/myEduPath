@@ -1,31 +1,6 @@
 console.log("main.js loaded");
 
-/* ===========================
-   THEME TOGGLE
-=========================== */
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const themeToggle = document.getElementById("themeToggle");
-
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener("click", function () {
-            document.body.classList.toggle("dark");
-
-            const theme = document.body.classList.contains("dark")
-                ? "dark"
-                : "light";
-
-            localStorage.setItem("theme", theme);
-        });
-    }
-
-});
 
 
 /* ===========================
