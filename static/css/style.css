@@ -501,69 +501,104 @@ footer {
 }
 
 
+/* =========================
+   JOBS PAGE fixed
+========================= */
+
 .jobs-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
 
+/* Glass Card */
+
 .job-card {
-    background: #fff;
-    padding: 25px;
-    border-radius: 16px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
-    transition: transform 0.2s ease;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 28px;
+  border-radius: 20px;
+  transition: 0.3s ease;
 }
 
 .job-card:hover {
-    transform: translateY(-6px);
+  transform: translateY(-8px);
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent);
 }
+
+/* Title */
 
 .job-card h3 {
-    color: #1db954;
-    margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 20px;
+  margin-bottom: 12px;
 }
+
+/* Text */
 
 .job-card p {
-    color: #444;
-    margin: 6px 0;
+  color: var(--text-secondary);
+  margin: 6px 0;
+  font-size: 14px;
 }
 
+.job-card strong {
+  color: var(--text-primary);
+}
+
+/* Button */
+
+.job-card .btn {
+  margin-top: 18px;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.job-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(34,197,94,0.4);
+}
+
+
+/* =========================
+   JOB DETAIL PAGE
+========================= */
+
 .job-detail-card {
-    max-width: 800px;
-    margin: 0 auto;
-    background: #fff;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 80px auto;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 40px;
+  border-radius: 20px;
 }
 
 .job-detail-card h2 {
-    color: #1db954;
-    margin-bottom: 15px;
+  color: var(--accent);
+  margin-bottom: 20px;
 }
 
 .job-detail-card h3 {
-    margin-top: 20px;
-    color: #333;
+  margin-top: 20px;
+  color: var(--text-primary);
 }
 
 .job-detail-card p {
-    color: #555;
-    line-height: 1.6;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
-/* Floating Icons Background */
-.floating-icons {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1; /* stays behind content */
-  overflow: hidden;
-}
+
+
 
 .floating-icons .icon {
   position: absolute;
