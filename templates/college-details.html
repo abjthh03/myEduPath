@@ -8,19 +8,26 @@
 </head>
 <body>
 
-<header>
-    <h1>myEduPath</h1>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/courses">Courses</a>
-        <a href="/colleges" class="active">Colleges</a>
-        <a href="/jobs">Jobs</a>
-        <a href="/contact">Contact</a>
-    </nav>
-</header>
+<div class="navbar">
+  <div class="nav-container">
 
-<section class="home-section">
-    <div class="college-card">
+    <a href="/" class="logo-text">
+      myEdu<span>Path</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/courses">Courses</a>
+      <a href="/colleges" class="active">Colleges</a>
+      <a href="/jobs">Jobs</a>
+      <a href="/contact">Contact</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="college-details-wrapper">
+  <div class="college-details-card">
 
         <h2>{{ college.college_name }}</h2>
 
@@ -53,9 +60,10 @@
         {% endif %}
 
         <br>
-        <a href="/colleges" class="btn small-btn">← Back to Colleges</a>
+       <a href="/colleges" class="back-btn">← Back to Colleges</a>
 
     </div>
+</div>
 </section>
 
 <footer>
