@@ -1562,3 +1562,40 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 15px 30px rgba(34,197,94,0.4);
 }
+
+
+
+/* =========================
+   CONTACT BACK BUTTON
+========================= */
+
+.contact-hero {
+  position: relative;
+}
+
+/* Button top right */
+.back-home-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+
+  padding: 10px 20px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+.back-home-btn:hover {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(34,197,94,0.4);
+}
