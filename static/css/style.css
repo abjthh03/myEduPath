@@ -537,6 +537,22 @@ footer {
   margin-bottom: 12px;
 }
 
+
+.jobs-hero {
+  padding: 100px 20px 60px;
+}
+
+.jobs-hero h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.jobs-hero p {
+  color: var(--text-secondary);
+}
+
+
+
 /* Text */
 
 .job-card p {
@@ -547,6 +563,7 @@ footer {
 
 .job-card strong {
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* Button */
@@ -565,7 +582,8 @@ footer {
 
 .job-card .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(34,197,94,0.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+
 }
 
 
