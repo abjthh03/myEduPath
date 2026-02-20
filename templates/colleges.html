@@ -179,7 +179,9 @@ function displayColleges(colleges) {
                     ⭐ ${college.type || "Private"}
                 </div>
 
-               <a href="/college/{{ college.id }}">View Details</a>
+               <a href="/college/${college.id}" class="btn" style="margin-top:15px; display:inline-block;">
+                    View Details
+                </a>
 
             </div>
         `;
