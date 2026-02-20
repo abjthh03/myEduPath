@@ -507,9 +507,10 @@ footer {
 
 .jobs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 /* Glass Card */
@@ -533,22 +534,24 @@ footer {
 
 .job-card h3 {
   color: var(--accent);
-  font-size: 20px;
-  margin-bottom: 12px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
-
 .jobs-hero {
-  padding: 100px 20px 60px;
+  padding: 120px 20px 60px;
+  text-align: center;
 }
 
 .jobs-hero h1 {
-  font-size: 42px;
-  margin-bottom: 10px;
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 12px;
 }
 
 .jobs-hero p {
   color: var(--text-secondary);
+  font-size: 16px;
 }
 
 
