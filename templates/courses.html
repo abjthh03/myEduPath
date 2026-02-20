@@ -7,19 +7,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+<section class="courses-hero">
+    <div class="container">
+        <h1>Explore Courses</h1>
+        <p>Browse academic and professional courses to shape your future</p>
 
-<section class="hero home-hero">
-    <h2>Explore Courses</h2>
-    <p>Browse academic and professional courses to shape your future</p>
-
-    <div class="search-box">
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Search courses..."
-            onkeyup="searchCourses()"
-        >
-        <button class="btn">Search</button>
+        <div class="search-wrapper">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search courses..."
+                onkeyup="searchCourses()"
+            >
+            <button class="search-btn">Search</button>
+        </div>
     </div>
 </section>
 
@@ -28,7 +29,7 @@
 </section>
 
 <section class="home-section">
-    <div id="courseContainer" class="course-grid">
+    <div id="courseContainer" class="course-cards">
         <p>Loading courses...</p>
     </div>
 </section>
