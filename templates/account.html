@@ -37,27 +37,46 @@
 <section class="auth-wrapper">
     <div class="auth-card" style="max-width:700px; text-align:left;">
 
+        <div class="account-layout">
+
+    <div class="account-info">
         <h2>My Account</h2>
 
-        <div class="card">
+        <div class="info-item">
             <strong>Name</strong>
-            {{ user.name }}
+            <span>{{ user.name }}</span>
         </div>
 
-        <div class="card">
+        <div class="info-item">
             <strong>Email</strong>
-            {{ user.email }}
+            <span>{{ user.email }}</span>
         </div>
 
-        <div class="card">
+        <div class="info-item">
             <strong>Account Type</strong>
-            {{ user.role|capitalize }}
+            <span>{{ user.role|capitalize }}</span>
         </div>
 
-        <div class="card">
+        <div class="info-item">
             <strong>User ID</strong>
-            {{ user.id }}
+            <span>{{ user.id }}</span>
         </div>
+    </div>
+
+    <div class="account-avatar">
+        <div class="profile-circle">
+            {{ user.name[0]|upper }}
+        </div>
+
+        <form action="/upload-profile" method="POST" enctype="multipart/form-data">
+            <input type="file" name="profile" accept="image/*" required>
+            <button type="submit" class="auth-btn small-btn">
+                Update Photo
+            </button>
+        </form>
+    </div>
+
+</div>
 
         <div style="margin-top:30px;">
             <h3 style="margin-bottom:15px;">📄 Resume</h3>
