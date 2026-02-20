@@ -1239,81 +1239,80 @@ body.dark .logo-main {
     }
 }
 
-
-/* ===============================
-   SOCIAL CONTACT SECTION
-================================ */
+/* ===========================
+   SOCIAL CONTACT 
+=========================== */
 
 .social-contact {
-    margin-top: 60px;
+    margin: 100px 20px 80px;
     text-align: center;
 }
 
 .social-contact h3 {
-    margin-bottom: 25px;
+    margin-bottom: 35px;
     font-size: 20px;
     font-weight: 600;
+    color: var(--text-primary);
 }
 
+/* Button container */
 .social-icons {
     display: flex;
     justify-content: center;
-    gap: 25px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
+/* Base button style */
 .social-icons a {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 22px;
-    border-radius: 50px;
-    text-decoration: none;
+    gap: 12px;
+    padding: 14px 26px;
+    border-radius: 999px;
     font-weight: 600;
-    transition: 0.3s ease;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Icon size */
 .social-icons img {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
 }
 
-/* WhatsApp */
+/* ===========================
+   WHATSAPP BUTTON
+=========================== */
+
 .whatsapp-btn {
-    background: #25D366;
+    background: linear-gradient(90deg, #25D366, #1db954);
     color: white;
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
 }
 
 .whatsapp-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(37, 211, 102, 0.35);
 }
 
-/* Instagram */
+/* ===========================
+   INSTAGRAM BUTTON
+=========================== */
+
 .insta-btn {
-    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    background: linear-gradient(90deg, #ff7a18, #e1306c, #833ab4);
     color: white;
+    box-shadow: 0 8px 20px rgba(225, 48, 108, 0.25);
 }
 
 .insta-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(220, 39, 67, 0.4);
-}
-.login-btn {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 15px 35px rgba(225, 48, 108, 0.35);
 }
 
-.signup-btn {
-    background: var(--primary);
-    color: white;
-}
-
-.signup-btn:hover {
-    background: #16a34a;
-}
 
 /* ================================
    NAVBAR 
